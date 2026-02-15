@@ -294,8 +294,20 @@
   }
 
   /* Pyramid SVG layers */
-  .pyramid-layer { transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); cursor: pointer; }
+  .pyramid-layer { transition: opacity 0.15s ease, filter 0.15s ease, stroke-width 0.15s ease; cursor: pointer; }
   .pyramid-layer:hover { opacity: 0.85; filter: brightness(1.15); }
+  .pyramid-layer.active { stroke-width: 3; filter: brightness(1.1); opacity: 1; }
+
+  /* Best practice detail panels — instant with fade */
+  .bp-detail {
+    display: none;
+    animation: bpFadeIn 0.15s ease-out;
+  }
+  .bp-detail.visible { display: block; }
+  @keyframes bpFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* Grid cards */
   .grid-card {
@@ -3781,13 +3793,23 @@
     event.target.classList.add('active');
   }
 
-  // Pyramid layer click — show detail card
+  // Pyramid layer click — instant show with fade
   function showPyramidLayer(layerId) {
-    document.querySelectorAll('.bp-detail').forEach(d => d.style.display = 'none');
+    // Remove active from all pyramid layers
+    document.querySelectorAll('.pyramid-layer').forEach(p => p.classList.remove('active'));
+    // Highlight the clicked polygon
+    if (event && event.target) event.target.classList.add('active');
+    // Toggle detail panels using class (avoids layout thrash)
+    document.querySelectorAll('.bp-detail').forEach(d => {
+      d.classList.remove('visible');
+      d.style.display = 'none';
+    });
     const el = document.getElementById(layerId);
     if (el) {
       el.style.display = 'block';
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Force reflow so the animation re-triggers
+      void el.offsetWidth;
+      el.classList.add('visible');
     }
   }
 
