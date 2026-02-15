@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrik's Portfolio | Data &amp; Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAF8F5;
+            color: #1A1A1A;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(196, 101, 58, 0.1);
+            color: #C4653A;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            color: #C4653A;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .cards {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E8E4DF;
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            text-align: left;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .card:hover {
+            border-color: #C4653A;
+            box-shadow: 0 8px 30px rgba(196, 101, 58, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            background: rgba(196, 101, 58, 0.08);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .card-content p {
+            font-size: 0.88rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .card-arrow {
+            flex-shrink: 0;
+            margin-left: auto;
+            color: #C4653A;
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.25s ease;
+            font-size: 1.2rem;
+        }
+
+        .card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        footer a {
+            color: #C4653A;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">Portfolio</div>
+        <h1>Data &amp; Analytics <span>Accelerator</span></h1>
+        <p class="subtitle">Interactive guides and frameworks for Power BI governance, performance optimisation, and enterprise analytics strategy.</p>
+
+        <div class="cards">
+            <a class="card" href="powerbi-governance_4.html">
+                <div class="card-icon">&#x1F3DB;</div>
+                <div class="card-content">
+                    <h2>Data Analytics Governance Playbook</h2>
+                    <p>A comprehensive governance pyramid — from executive strategy to delivery-level controls — with interactive layers and maturity scoring.</p>
+                </div>
+                <div class="card-arrow">&rarr;</div>
+            </a>
+        </div>
+
+        <footer>
+            Built by <a href="https://github.com/ShriksPortfolio" target="_blank" rel="noopener">Shrik</a>
+        </footer>
+    </div>
+</body>
+</html>
