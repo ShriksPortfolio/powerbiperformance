@@ -85,7 +85,7 @@
     border-radius: 14px;
     padding: 1.25rem 1.75rem;
     margin: 0 auto 1.25rem auto;
-    max-width: 1560px;
+    max-width: 1816px;
     text-align: left;
   }
   .intro-banner p {
@@ -117,7 +117,7 @@
 
   /* ── LAYOUT ── */
   .main-container {
-    max-width: 1600px;
+    max-width: 1880px;
     margin: 0 auto;
     padding: 2rem;
     display: grid;
@@ -3948,7 +3948,6 @@
           <div class="ds-nav-item" onclick="switchRole('role-data-architect')">
             <div class="ds-nav-icon" style="background:#4A4742;">🏛️</div>
             Data Architect
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-data-engineer')">
             <div class="ds-nav-icon" style="background:#117865;">🔧</div>
@@ -4871,16 +4870,284 @@
           </div><!-- /role-security-lead -->
 
           <div id="role-data-architect" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#4A4742;">🏛️</div>
-              <div><h2>Data Architect</h2>
-                <p>Designs the end-to-end data architecture — source-to-semantic-model, star-schema standards, and the certified-dataset strategy.</p></div>
+              <div>
+                <h2>Data Architect</h2>
+                <p>Owns the blueprint — how data flows from source to certified semantic model, the modelling standards everyone builds to, and the architecture calls that keep BI coherent as it scales. Equal parts technical design and stakeholder alignment.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <!-- Sub-tabs -->
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-arch-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-arch-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-arch-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-arch-resp" class="ds-content-panel active">
+
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Data Architect sets the blueprint for the whole analytics estate: the <em>source-to-semantic-model flow</em> (typically medallion bronze → silver → gold → star-schema → certified semantic model), the <em>modelling standards</em> everyone builds to, and the big architecture calls (lakehouse vs warehouse, shared vs departmental models, import vs Direct Lake). Just as importantly, this is a <strong>design-authority and alignment role</strong>, not only a technical one — a large part of the job is translating business strategy into a data architecture, running design sessions, setting standards, and getting stakeholders aligned. <em>They decide the pattern; engineers and developers implement it.</em>
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">
+                  What the Data Architect Owns
+                  <span class="badge badge-gold">Technical + Strategic</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:4%;">#</th>
+                      <th style="width:24%;">Responsibility</th>
+                      <th style="width:40%;">What it covers</th>
+                      <th style="width:32%;">Guardrail / boundary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Reference architecture</strong> <span class="badge badge-navy" style="font-size:0.55rem;">TECH</span></td>
+                      <td>Define the end-to-end pattern: source → medallion (bronze / silver / gold) → star-schema gold → certified semantic model.</td>
+                      <td>Sets the pattern; the data engineer builds the pipelines and the developer builds the model.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Modelling standards</strong> <span class="badge badge-navy" style="font-size:0.55rem;">TECH</span></td>
+                      <td>Star schema, surrogate keys, naming conventions, a proper date dimension — "dimensions filter, facts summarise".</td>
+                      <td>Owns the standard and reviews adherence; doesn't hand-build every model.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Single-source-of-truth strategy</strong> <span class="badge badge-gold" style="font-size:0.55rem;">STRATEGY</span></td>
+                      <td>Decide where enterprise semantic models live, how many, what's shared vs departmental, and the certification path.</td>
+                      <td>A strategy + governance call, not a build task.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Business alignment</strong> <span class="badge badge-gold" style="font-size:0.55rem;">PEOPLE</span></td>
+                      <td>Translate business strategy and requirements into the architecture; run design sessions and agree scope with stakeholders.</td>
+                      <td>Mostly stakeholder work — listening, framing, agreeing — not coding.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>Platform &amp; pattern decisions</strong> <span class="badge badge-gold" style="font-size:0.55rem;">STRATEGY</span></td>
+                      <td>Lakehouse vs warehouse, Direct Lake vs import vs DirectQuery, composite-model strategy, build vs buy.</td>
+                      <td>Decides the pattern with the CoE; doesn't own the capacity or tenant.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td><strong>Roadmap &amp; standards ownership</strong> <span class="badge badge-gold" style="font-size:0.55rem;">PEOPLE</span></td>
+                      <td>Own the architecture roadmap, the reference-architecture docs and the decision log; mentor developers.</td>
+                      <td>Influence and documentation, not delivery of individual reports.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td><strong>Design review gate</strong> <span class="badge badge-navy" style="font-size:0.55rem;">TECH</span></td>
+                      <td>Review major models before certification — schema, performance, and conformance to the standards.</td>
+                      <td>A review authority, not the implementer.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">
+                  RACI — Decision Rights
+                  <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:34%;">Governance decision</th>
+                      <th style="width:16%;">Data Architect</th>
+                      <th style="width:16%;">Data Engineer</th>
+                      <th style="width:17%;">BI Developer</th>
+                      <th style="width:17%;">CoE / Gov</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Choose lakehouse vs warehouse</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Define the modelling standard</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Decide how many enterprise models</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Build the pipeline to the gold layer</strong></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Develop the certified semantic model</strong></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Approve a model's architecture for certification</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp;
+                  <span class="role-raci-badge raci-a">A</span> Accountable &nbsp;
+                  <span class="role-raci-badge raci-c">C</span> Consulted &nbsp;
+                  <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-arch-qa" class="ds-content-panel">
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q1</span>
+                  What does the Data Architect own — and is it a technical or a strategic role?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p><strong>Both, deliberately.</strong> They own the blueprint: the reference architecture, the modelling standards, and the single-source-of-truth strategy.</p>
+                  <p>But a large part of the job is <strong>non-technical</strong> — translating business strategy into an architecture, running design sessions, setting standards, and aligning stakeholders. They decide the pattern; engineers and developers implement it. A great architect is judged as much on <em>clarity and influence</em> as on schema design.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q2</span>
+                  Why is the star schema the standard — in one breath?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>Because every report visual fires a query that <strong>filters, groups, and summarises</strong>. A star schema gives you <em>dimensions</em> to filter / group and <em>facts</em> to summarise — exactly how the engine wants to work. It's faster, smaller, and far easier for authors to understand than a normalised, operational layout.</p>
+                  <p>The usual smells: snowflaking, mixing fact and dimension in one table, and many-to-many relationships.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q3</span>
+                  How does the architecture flow from raw source to a report?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>The reference pattern:</p>
+                  <p style="font-family:monospace; font-size:0.78rem; background:rgba(45,43,40,0.04); padding:0.6rem 0.8rem; border-radius:8px;">source → <strong>bronze</strong> (raw) → <strong>silver</strong> (cleansed, conformed) → <strong>gold</strong> (star-schema) → certified <strong>semantic model</strong> → reports</p>
+                  <p>Medallion layers raise quality stage by stage; the gold layer is shaped as a star schema; the semantic model is the single, governed, reusable layer the business actually builds on.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q4</span>
+                  One enterprise semantic model, or many? Where's the line?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p><strong>Neither extreme.</strong> One giant model for everything is impractical; a new model per report is chaos. The architect's call is to lean toward <strong>few, shared, certified</strong> semantic models that deliver a single version of the truth — and create a new one only when a genuinely distinct subject area justifies it.</p>
+                  <p>Reuse via live connection and Build permission beats duplication every time.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q5</span>
+                  How do you set standards without becoming the bottleneck?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>Make the standard the <em>easy</em> path: reference-architecture docs, template models, a clear certification checklist, and mentoring — so teams self-serve correctly. The architect reviews and gates the <strong>major</strong> models, not every report. <strong>Governance by enablement, not by approval queue.</strong></p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q6</span>
+                  Where does the Architect's authority stop?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>They design the pattern and own the standards, but they don't run the platform (Admin / Capacity Admin), don't build the pipelines (Data Engineer), and don't author every model (BI Developer). They're the <strong>design authority and the alignment layer</strong> — accountable for coherence, not for every line of M or DAX.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-arch-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/star-schema" target="_blank" rel="noopener">
+                  <div class="rc-title">Understand Star Schema →</div>
+                  <div class="rc-desc">Why dimensional modelling matters for Power BI performance and usability.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/onelake/onelake-medallion-lakehouse-architecture" target="_blank" rel="noopener">
+                  <div class="rc-title">Medallion Lakehouse Architecture →</div>
+                  <div class="rc-desc">Bronze / silver / gold layering in OneLake — the recommended Fabric pattern.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/composite-model-guidance" target="_blank" rel="noopener">
+                  <div class="rc-title">Composite Model Guidance →</div>
+                  <div class="rc-desc">When to extend a shared model, and the cross-source-group pitfalls.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-across-workspaces" target="_blank" rel="noopener">
+                  <div class="rc-title">Shared Semantic Models →</div>
+                  <div class="rc-desc">Reuse across workspaces to achieve a single version of the truth.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-endorsement-overview" target="_blank" rel="noopener">
+                  <div class="rc-title">Endorsement: Promote &amp; Certify →</div>
+                  <div class="rc-desc">The certification path that marks a model as authoritative.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-usage-scenario-managed-self-service-bi" target="_blank" rel="noopener">
+                  <div class="rc-title">Managed Self-Service BI →</div>
+                  <div class="rc-desc">The pattern: few shared models, many self-service reports on top.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-bi-strategy-overview" target="_blank" rel="noopener">
+                  <div class="rc-title">BI Strategy →</div>
+                  <div class="rc-desc">Strategic, tactical, and solution planning — the non-technical backbone.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-bi-strategy-bi-solution-planning" target="_blank" rel="noopener">
+                  <div class="rc-title">BI Solution Planning →</div>
+                  <div class="rc-desc">Requirements, design sessions, and proof-of-concept practice.</div>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- /role-data-architect -->
 
           <div id="role-data-engineer" class="ds-source-panel">
             <div class="ds-source-header">
