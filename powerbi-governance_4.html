@@ -831,6 +831,120 @@
     margin-top: 0.15rem;
   }
 
+  /* ═══ ROLE PROFILES — overview, Q&A accordion, RACI, resources ═══ */
+  .role-overview {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid rgba(45,43,40,0.06);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: #4A4842;
+  }
+  .role-overview strong { color: var(--dark); }
+  .role-overview em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* Q&A accordion */
+  .role-qa-item {
+    background: var(--white);
+    border: 1px solid rgba(45,43,40,0.07);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .role-qa-item.open { box-shadow: 0 3px 14px rgba(45,43,40,0.07); }
+  .role-qa-q {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--dark);
+    user-select: none;
+    transition: background 0.2s ease;
+  }
+  .role-qa-q:hover { background: rgba(196,101,58,0.03); }
+  .role-qa-marker {
+    width: 26px; height: 26px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(196,101,58,0.1);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.66rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .role-qa-chevron {
+    margin-left: auto;
+    color: var(--slate);
+    transition: transform 0.25s ease;
+    font-size: 0.72rem;
+  }
+  .role-qa-item.open .role-qa-chevron { transform: rotate(90deg); }
+  .role-qa-a {
+    display: none;
+    padding: 0 1.5rem 1.15rem 3.5rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: #5A5852;
+  }
+  .role-qa-item.open .role-qa-a { display: block; }
+  .role-qa-a p { margin-bottom: 0.5rem; }
+  .role-qa-a ul { margin: 0.4rem 0 0.5rem 1.1rem; }
+  .role-qa-a li { margin-bottom: 0.3rem; }
+  .role-qa-a strong { color: var(--dark); }
+
+  /* RACI badges */
+  .role-raci-badge {
+    display: inline-block;
+    min-width: 22px; text-align: center;
+    border-radius: 6px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    padding: 0.12rem 0.35rem;
+    margin: 0 1px;
+  }
+  .raci-r { background:#EEF4ED; color:#5B8C5A; }
+  .raci-a { background:#FDEEE7; color:#C4653A; }
+  .raci-c { background:#FDF3E7; color:#C4883A; }
+  .raci-i { background:#EEF0F4; color:#5A6B8C; }
+
+  /* Resource cards */
+  .role-resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 0.85rem;
+  }
+  .role-resource-card {
+    display: block;
+    background: var(--white);
+    border: 1px solid rgba(45,43,40,0.07);
+    border-radius: 12px;
+    padding: 0.95rem 1.1rem;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .role-resource-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 3px 12px rgba(45,43,40,0.07);
+    transform: translateY(-1px);
+  }
+  .role-resource-card .rc-title {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .role-resource-card .rc-desc {
+    font-size: 0.72rem;
+    color: #7A7A6E;
+    line-height: 1.55;
+  }
+
   @media (max-width: 1100px) {
     .ds-layout { grid-template-columns: 1fr; }
     .ds-sidebar { position: static; }
@@ -971,6 +1085,7 @@
       <button class="view-toggle active" onclick="switchView('governance')">🏛 Governance View</button>
       <button class="view-toggle" onclick="switchView('bestpractices')">🔺 Enterprise Best Practices</button>
       <button class="view-toggle" onclick="switchView('datasources')">🔌 Data Source Playbooks</button>
+      <button class="view-toggle" onclick="switchView('roleprofiles')">👤 Role Profiles</button>
     </div>
 
     <!-- ═══════════════════════════════════════════ -->
@@ -3807,6 +3922,490 @@
     </div><!-- /view-datasources -->
 
 
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- VIEW 4: ROLE PROFILES                       -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="view-roleprofiles" style="display:none;">
+
+      <div class="ds-layout">
+
+        <!-- ROLE SIDEBAR -->
+        <nav class="ds-sidebar">
+          <div class="ds-sidebar-title">Role Profiles</div>
+
+          <div class="ds-nav-item active" onclick="switchRole('role-powerbi-admin')">
+            <div class="ds-nav-icon" style="background:#C4653A;">🛡️</div>
+            Power BI Administrator
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-capacity-admin')">
+            <div class="ds-nav-icon" style="background:#2D6A9F;">🗂️</div>
+            Capacity / Workspace Admin
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-security-lead')">
+            <div class="ds-nav-icon" style="background:#7A2E2E;">🔒</div>
+            Security Lead
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-data-architect')">
+            <div class="ds-nav-icon" style="background:#4A4742;">🏛️</div>
+            Data Architect
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-data-engineer')">
+            <div class="ds-nav-icon" style="background:#117865;">🔧</div>
+            Data Engineer
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-bi-developer')">
+            <div class="ds-nav-icon" style="background:#C4883A;">📊</div>
+            BI / Report Developer
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-data-analyst')">
+            <div class="ds-nav-icon" style="background:#5B8C5A;">📈</div>
+            Data Analyst
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-governance-lead')">
+            <div class="ds-nav-icon" style="background:#8B5E3C;">📋</div>
+            Data Governance Lead
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-divider"></div>
+          <div class="ds-nav-item" onclick="switchRole('role-senior-software-lead')">
+            <div class="ds-nav-icon" style="background:#3D3A36;">⚙️</div>
+            Senior Software Lead
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+          <div class="ds-nav-item" onclick="switchRole('role-coe-lead')">
+            <div class="ds-nav-icon" style="background:#9F6B2D;">🎯</div>
+            BI CoE Lead
+            <span class="ds-nav-coming">SOON</span>
+          </div>
+        </nav>
+
+        <!-- ROLE CONTENT AREA -->
+        <div class="ds-content-area">
+
+          <!-- ═══ POWER BI ADMINISTRATOR (TEMPLATE — FULLY BUILT) ═══ -->
+          <div id="role-powerbi-admin" class="ds-source-panel active">
+
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#C4653A;">🛡️</div>
+              <div>
+                <h2>Power BI / Fabric Administrator</h2>
+                <p>Custodian of the tenant. Owns platform-wide configuration, feature governance, and the guardrails that keep self-service safe — but not the data or the content inside workspaces.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
+            </div>
+
+            <!-- Sub-tabs -->
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-pba-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-pba-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-pba-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
+            </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-pba-resp" class="ds-content-panel active">
+
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Power BI / Fabric Administrator holds the <em>Fabric Administrator</em> role in Microsoft&nbsp;365 / Entra&nbsp;ID. They are accountable for how the platform is configured for the <strong>entire organisation</strong>: which features are on, who can do what, and the tenant-wide guardrails that let self-service BI scale without becoming a free-for-all. The guiding principle: <em>govern the platform, not the content</em> — they make the safe path the easy path, but they do not own the data, the semantic models, or the RLS rules that live inside workspaces.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">
+                  What the Power BI Admin Owns
+                  <span class="badge badge-gold">7 Core Responsibilities</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:4%;">#</th>
+                      <th style="width:22%;">Responsibility</th>
+                      <th style="width:40%;">What it covers</th>
+                      <th style="width:34%;">Guardrail / boundary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Tenant settings</strong></td>
+                      <td>Enable/disable platform features (export, publish to web, sharing, Copilot, dev mode) and scope each to security groups.</td>
+                      <td>Change-controlled, never ad-hoc. Risky features are scoped to a group — never enabled for the entire organisation.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Capacity governance</strong></td>
+                      <td>Assign workspaces to Fabric / Premium capacities; monitor utilisation, throttling and bursting.</td>
+                      <td>Does not set the SKU / budget alone — that's a joint call with Finance and the CoE.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Workspace lifecycle</strong></td>
+                      <td>Set workspace-creation policy, naming standards, and the cleanup of orphaned or abandoned workspaces.</td>
+                      <td>Does not author or edit the content inside business workspaces.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Platform identity &amp; access</strong></td>
+                      <td>Manage who holds admin roles, gateway admins, and the service principals used for the Admin APIs.</td>
+                      <td>Does not define business RLS / OLS rules — that's the model developer with the Security Lead.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>Information protection</strong></td>
+                      <td>Turn on sensitivity labels and DLP policies for Power BI in the tenant; wire up to Microsoft Purview.</td>
+                      <td>Enables the capability; the label <em>taxonomy</em> is owned by Security / Compliance.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td><strong>Monitoring &amp; audit</strong></td>
+                      <td>Admin monitoring workspace, activity / audit log access, usage metrics, feature-drift signals.</td>
+                      <td>Accountable for <em>visibility</em>; acting on policy breaches sits with Security / the CoE.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td><strong>Gateways (tenant)</strong></td>
+                      <td>Govern on-prem / VNet data gateways — clustering for HA, version currency, gateway admins.</td>
+                      <td>Governs the bridge, not the data sources themselves.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">
+                  RACI — Decision Rights
+                  <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:34%;">Governance decision</th>
+                      <th style="width:16%;">PBI Admin</th>
+                      <th style="width:16%;">Security Lead</th>
+                      <th style="width:17%;">Data Gov Lead</th>
+                      <th style="width:17%;">Workspace Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Enable/disable a tenant feature</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Define sensitivity-label taxonomy</strong></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Assign workspace to a capacity</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Implement RLS / OLS on a model</strong></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Grant the Fabric Admin role</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Respond to a DLP / audit alert</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp;
+                  <span class="role-raci-badge raci-a">A</span> Accountable &nbsp;
+                  <span class="role-raci-badge raci-c">C</span> Consulted &nbsp;
+                  <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-pba-qa" class="ds-content-panel">
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q1</span>
+                  What does the Power BI Administrator actually own — and what do they <em>not</em> own?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>They own the <strong>platform configuration</strong>: tenant settings, capacity allocation, gateways, admin roles, sensitivity-label enablement, and tenant-wide monitoring.</p>
+                  <p>They do <strong>not</strong> own data content, semantic models, the business meaning of data, or the RLS rules inside workspaces. The mantra is <em>"govern the platform, not the content."</em></p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q2</span>
+                  Where are the Admin's guardrails — what must they never do unilaterally?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li>Enable a risky tenant feature (Publish to Web, export) for the <strong>entire org</strong> without scoping to a security group and going through change control.</li>
+                    <li>Grant the Fabric Administrator role broadly — it breaks least privilege.</li>
+                    <li>Define the <strong>sensitivity-label taxonomy</strong> alone — that's Security / Compliance.</li>
+                    <li>Change capacity SKU or budget without Finance and the CoE.</li>
+                    <li>Edit or republish content inside business workspaces.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q3</span>
+                  Which decisions are the Admin's, and which escalate to the governance board / CoE?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p><strong>Admin decides:</strong> day-to-day platform configuration <em>within agreed policy</em> — scoping a setting to a group, assigning a workspace to a capacity, rotating a gateway.</p>
+                  <p><strong>Escalates:</strong> new policy itself (e.g. turning Publish to Web on at all), label taxonomy, capacity budget, and any exception to data-residency or compliance rules.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q4</span>
+                  How is the Power BI Admin different from a Capacity Admin and a Workspace Admin?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li><strong>Tenant / Fabric Admin</strong> — the whole tenant: tenant settings, every capacity, all admin roles.</li>
+                    <li><strong>Capacity Admin</strong> — one specific capacity: assign workspaces and manage workloads, but no tenant settings.</li>
+                    <li><strong>Workspace Admin</strong> — a single workspace's content and members only.</li>
+                  </ul>
+                  <p>By least privilege, most people need workspace or capacity admin; only a tiny number need tenant admin.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q5</span>
+                  What's the least-privilege way to grant the Fabric Administrator role?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li>Keep the number of tenant admins tiny — typically 2–4.</li>
+                    <li>Use <strong>Entra PIM</strong> for just-in-time, time-boxed elevation rather than standing access.</li>
+                    <li>Assign via a security group, not named individuals; audit membership quarterly.</li>
+                    <li>Prefer scoped roles (Capacity Admin, workspace roles) wherever the task allows.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q6</span>
+                  How should the Admin manage tenant settings safely?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>Document a baseline of every setting and its intended state. Scope each setting to a security group, treat changes as change-controlled, and review the exported tenant-settings configuration on a regular cadence. Use delegated admin settings so domain / workspace admins handle scoped concerns without needing tenant rights.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q7</span>
+                  What is the Admin accountable for monitoring?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>The activity / audit log (via the Admin API or Purview), the admin monitoring workspace and usage metrics, capacity utilisation and throttling, gateway health, and feature usage that drifts from policy (e.g. a sudden spike in exports). The Admin <strong>surfaces the signal</strong>; the CoE and Security <strong>act on the breach</strong>.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-pba-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/admin/roles" target="_blank" rel="noopener">
+                  <div class="rc-title">Fabric Admin Roles →</div>
+                  <div class="rc-desc">The admin roles and what each one can do across the tenant.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-tenant-administration" target="_blank" rel="noopener">
+                  <div class="rc-title">Tenant Administration Planning →</div>
+                  <div class="rc-desc">Microsoft's implementation-planning guidance for the tenant admin.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-security-tenant-level-planning" target="_blank" rel="noopener">
+                  <div class="rc-title">Tenant-Level Security Planning →</div>
+                  <div class="rc-desc">Security groups, scoping, and tenant-level access strategy.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-governance" target="_blank" rel="noopener">
+                  <div class="rc-title">Fabric Adoption Roadmap: Governance →</div>
+                  <div class="rc-desc">Where the admin fits in the broader governance operating model.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-auditing-monitoring-tenant-level-auditing" target="_blank" rel="noopener">
+                  <div class="rc-title">Tenant-Level Auditing →</div>
+                  <div class="rc-desc">What to monitor and how to access the activity / audit log.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/rest/api/power-bi/admin" target="_blank" rel="noopener">
+                  <div class="rc-title">Power BI Admin REST API →</div>
+                  <div class="rc-desc">Programmatic governance — tenant settings, metadata, activity events.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank" rel="noopener">
+                  <div class="rc-title">Row-Level Security (RLS) →</div>
+                  <div class="rc-desc">The boundary: how RLS works, and why the admin enables but doesn't author it.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/governance/metadata-scanning-overview" target="_blank" rel="noopener">
+                  <div class="rc-title">Metadata Scanning Overview →</div>
+                  <div class="rc-desc">Tenant-wide cataloguing of what content exists and who owns it.</div>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- /role-powerbi-admin -->
+
+          <!-- ═══ STUB PANELS — built once the template is approved ═══ -->
+          <div id="role-capacity-admin" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#2D6A9F;">🗂️</div>
+              <div><h2>Capacity / Workspace Administrator</h2>
+                <p>Manages capacity allocation, workspace assignment, and workload throttling within a delegated scope — without tenant-wide rights.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-security-lead" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#7A2E2E;">🔒</div>
+              <div><h2>Security Lead</h2>
+                <p>Owns the information-protection model: sensitivity-label taxonomy, RLS / OLS standards, DLP policy, and conditional access for BI.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-data-architect" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#4A4742;">🏛️</div>
+              <div><h2>Data Architect</h2>
+                <p>Designs the end-to-end data architecture — source-to-semantic-model, star-schema standards, and the certified-dataset strategy.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-data-engineer" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#117865;">🔧</div>
+              <div><h2>Data Engineer</h2>
+                <p>Builds and operates the pipelines that feed Power BI — ingestion, transformation, refresh orchestration, and data quality.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-bi-developer" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#C4883A;">📊</div>
+              <div><h2>BI / Report Developer</h2>
+                <p>Builds semantic models and reports to standard — DAX, modelling, RLS implementation, and the certification path.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-data-analyst" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#5B8C5A;">📈</div>
+              <div><h2>Data Analyst</h2>
+                <p>Self-service author and consumer — explores certified data, builds team reports, and feeds requirements back to model owners.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-governance-lead" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#8B5E3C;">📋</div>
+              <div><h2>Data Governance Lead</h2>
+                <p>Chairs the governance model — policy, certification / endorsement, data classification, and the Center-of-Excellence operating rhythm.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-senior-software-lead" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#3D3A36;">⚙️</div>
+              <div><h2>Senior Software Lead</h2>
+                <p>Owns engineering standards across the BI estate — source control, deployment pipelines, code review, and release management.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+          <div id="role-coe-lead" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#9F6B2D;">🎯</div>
+              <div><h2>BI Center of Excellence (CoE) Lead</h2>
+                <p>Runs the Center of Excellence — adoption, enablement, the champions network, and the bridge between business demand and platform governance.</p></div>
+            </div>
+            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
+              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
+              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+            </div>
+          </div>
+
+        </div><!-- /ds-content-area -->
+      </div><!-- /ds-layout -->
+    </div><!-- /view-roleprofiles -->
+
 
   </div><!-- /detail-panel -->
 </div><!-- /main-container -->
@@ -3835,6 +4434,7 @@
     document.getElementById('view-governance').style.display = viewId === 'governance' ? 'block' : 'none';
     document.getElementById('view-bestpractices').style.display = viewId === 'bestpractices' ? 'block' : 'none';
     document.getElementById('view-datasources').style.display = viewId === 'datasources' ? 'block' : 'none';
+    document.getElementById('view-roleprofiles').style.display = viewId === 'roleprofiles' ? 'block' : 'none';
     document.querySelectorAll('.view-toggle').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
@@ -3880,10 +4480,11 @@
   }
 
 
-  // Data Source sidebar navigation
+  // Data Source sidebar navigation (scoped to its own view)
   function switchDsSource(sourceId) {
-    document.querySelectorAll('.ds-source-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.ds-nav-item').forEach(n => n.classList.remove('active'));
+    var view = document.getElementById('view-datasources');
+    view.querySelectorAll('.ds-source-panel').forEach(p => p.classList.remove('active'));
+    view.querySelectorAll('.ds-nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById(sourceId).classList.add('active');
     event.currentTarget.classList.add('active');
   }
@@ -3895,6 +4496,20 @@
     panel.querySelectorAll('.ds-subtab').forEach(b => b.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     btn.classList.add('active');
+  }
+
+  // Role Profiles sidebar navigation (scoped to its own view)
+  function switchRole(roleId) {
+    var view = document.getElementById('view-roleprofiles');
+    view.querySelectorAll('.ds-source-panel').forEach(p => p.classList.remove('active'));
+    view.querySelectorAll('.ds-nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(roleId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // Role Profiles Q&A accordion toggle
+  function toggleQa(el) {
+    el.parentElement.classList.toggle('open');
   }
 </script>
 
