@@ -3940,7 +3940,6 @@
           <div class="ds-nav-item" onclick="switchRole('role-capacity-admin')">
             <div class="ds-nav-icon" style="background:#2D6A9F;">🗂️</div>
             Capacity / Workspace Admin
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-security-lead')">
             <div class="ds-nav-icon" style="background:#7A2E2E;">🔒</div>
@@ -4295,16 +4294,295 @@
 
           <!-- ═══ STUB PANELS — built once the template is approved ═══ -->
           <div id="role-capacity-admin" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#2D6A9F;">🗂️</div>
-              <div><h2>Capacity / Workspace Administrator</h2>
-                <p>Manages capacity allocation, workspace assignment, and workload throttling within a delegated scope — without tenant-wide rights.</p></div>
+              <div>
+                <h2>Capacity / Workspace Administrator</h2>
+                <p>Runs the day-to-day of a delegated scope — capacity health and workspace access — keeping content fast and tidy without holding tenant-wide rights. Least privilege, in practice.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">R</div>
+                <div class="lbl">Responsible</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <!-- Sub-tabs -->
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-cap-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-cap-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-cap-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-cap-resp" class="ds-content-panel active">
+
+              <div class="role-overview">
+                <strong>Who they are.</strong> This role wears two closely related hats, both <em>delegated</em> and <em>scoped</em>. The <strong>Capacity Admin</strong> runs a single Fabric / Premium capacity — assigning workspaces, watching utilisation, and right-sizing it. The <strong>Workspace Admin</strong> runs a single workspace — access, roles, settings, and lifecycle. They are the <strong>middle tier</strong> between the tenant Administrator and the content creators: enough authority to keep things healthy, deliberately <em>without</em> tenant-wide reach. A capacity <em>contributor</em> can move a workspace onto managed capacity without ever touching capacity settings — that delegation is the whole point.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">
+                  What the Capacity / Workspace Admin Owns
+                  <span class="badge badge-gold">7 Core Responsibilities</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:4%;">#</th>
+                      <th style="width:22%;">Responsibility</th>
+                      <th style="width:40%;">What it covers</th>
+                      <th style="width:34%;">Guardrail / boundary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Capacity assignment</strong></td>
+                      <td>Assign / reassign workspaces to the capacity via license mode; let workspace admins self-serve onto managed capacity through the <em>contributor</em> permission.</td>
+                      <td>A capacity contributor can assign workspaces but can't change capacity settings or delete it — that needs capacity admin.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Capacity health &amp; throttling</strong></td>
+                      <td>Monitor CU utilisation, smoothing and the throttling stages (interactive delay → interactive rejection → background rejection) in the Capacity Metrics app.</td>
+                      <td>Surfaces overload; budget / SKU strategy is escalated to the tenant Admin and Finance.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Right-sizing</strong></td>
+                      <td>Scale F SKUs up or down, scale out by moving workspaces across capacities, and configure surge protection for background jobs.</td>
+                      <td>Optimise the content first — don't buy a bigger SKU to mask an inefficient model.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Workspace access &amp; roles</strong></td>
+                      <td>Assign Admin / Member / Contributor / Viewer; use the Viewer role to enforce RLS for people who browse the workspace.</td>
+                      <td>Assign to security groups, not individuals; least privilege — most users are Viewer or Contributor.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>Workspace settings &amp; hygiene</strong></td>
+                      <td>Naming, OneDrive, workspace type / license mode, the 1,000-item limit, and retiring orphaned or abandoned workspaces.</td>
+                      <td>Doesn't author content; works within the tenant guardrails set by the Admin.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td><strong>Notifications &amp; alerts</strong></td>
+                      <td>Configure usage-threshold email notifications so an overload is caught before users feel it.</td>
+                      <td>An alert isn't a fix — pair it with the content owner to optimise.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td><strong>Placement strategy</strong></td>
+                      <td>Isolate critical / exec content, separate dev-test from production, and support per-business-unit capacities for decentralised admin and clean chargeback.</td>
+                      <td>Placement follows the CoE / architecture standards, not ad-hoc preference.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">
+                  RACI — Decision Rights
+                  <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:34%;">Governance decision</th>
+                      <th style="width:16%;">Cap / WS Admin</th>
+                      <th style="width:17%;">Tenant Admin</th>
+                      <th style="width:16%;">CoE / Arch</th>
+                      <th style="width:17%;">Content Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Assign a workspace to a capacity</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Scale the capacity SKU up / down</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Buy a new capacity / set budget</strong></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Grant a workspace role</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Configure surge protection</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Retire an orphaned workspace</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-a">A</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp;
+                  <span class="role-raci-badge raci-a">A</span> Accountable &nbsp;
+                  <span class="role-raci-badge raci-c">C</span> Consulted &nbsp;
+                  <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-cap-qa" class="ds-content-panel">
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q1</span>
+                  How does a Capacity Admin differ from a Workspace Admin — and both from the tenant Fabric Admin?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li><strong>Tenant / Fabric Admin</strong> — the whole tenant: tenant settings and every capacity.</li>
+                    <li><strong>Capacity Admin</strong> — one capacity: assign workspaces, manage workloads, scale, and configure capacity settings.</li>
+                    <li><strong>Workspace Admin</strong> — one workspace: roles, access, settings, and the app.</li>
+                  </ul>
+                  <p>The latter two are <strong>delegated, scoped</strong> roles — least privilege in action.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q2</span>
+                  What can a capacity <em>contributor</em> do versus a capacity <em>admin</em>?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>A <strong>capacity admin</strong> can change capacity settings, add contributors, and add or remove workspaces. A <strong>contributor</strong> can assign workspaces to the capacity but <em>can't</em> modify settings or delete it.</p>
+                  <p>Contributor is the safe delegation: it lets workspace admins move their workspace onto a managed capacity without handing them full control.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q3</span>
+                  How do you know a capacity is overloaded, and what are the options?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>Watch the <strong>Capacity Metrics app</strong>. Fabric first <em>smooths</em> usage, then throttles in stages as sustained demand grows:</p>
+                  <ul>
+                    <li><strong>Interactive delay</strong> — 20s delay once you exceed the next 10 minutes of CUs.</li>
+                    <li><strong>Interactive rejection</strong> — interactive requests rejected (60-minute window).</li>
+                    <li><strong>Background rejection</strong> — everything rejected (24-hour window).</li>
+                  </ul>
+                  <p>When it's sustained: <strong>optimise</strong> the content, <strong>scale up</strong> the SKU, <strong>scale out</strong> by moving workspaces, and turn on <strong>surge protection</strong>. Optimise before you buy.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q4</span>
+                  What's the governance thinking behind workspace placement and multiple capacities?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p><strong>Isolation and a small blast radius.</strong> Put exec / critical content on its own capacity; keep dev-test off production; give each business unit its own capacity so management can be decentralised and chargeback is clean. If one capacity is mismanaged, the impact is confined to it — not the whole org.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q5</span>
+                  How should workspace roles be assigned safely?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li>Assign to <strong>security groups</strong>, not named individuals.</li>
+                    <li>Least privilege: most consumers = <strong>Viewer</strong> (which also enforces RLS on browse), authors = <strong>Contributor</strong>, owners = <strong>Member</strong>.</li>
+                    <li>Reserve <strong>Admin</strong> for the few who actually manage access — don't sprinkle it.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q6</span>
+                  Where are this role's guardrails — what escalates upward?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>They run the day-to-day <em>within delegated authority</em>. What escalates: <strong>buying a new capacity</strong> or changing budget / SKU strategy (tenant Admin + Finance), <strong>tenant settings</strong>, and anything touching tenant-wide policy. They surface the signals — throttling, orphaned workspaces, runaway items — and the tenant Admin / CoE own the policy response.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-cap-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/admin/capacity-settings" target="_blank" rel="noopener">
+                  <div class="rc-title">Manage your Fabric Capacity →</div>
+                  <div class="rc-desc">Capacity settings, plus the contributor-vs-admin permission split.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/enterprise/throttling" target="_blank" rel="noopener">
+                  <div class="rc-title">The Fabric Throttling Policy →</div>
+                  <div class="rc-desc">Smoothing, overage protection, and the three throttling stages.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/enterprise/optimize-capacity" target="_blank" rel="noopener">
+                  <div class="rc-title">Evaluate &amp; Optimize Your Capacity →</div>
+                  <div class="rc-desc">Optimise, scale up, scale out, and surge protection strategies.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app" target="_blank" rel="noopener">
+                  <div class="rc-title">Fabric Capacity Metrics App →</div>
+                  <div class="rc-desc">The capacity admin's primary tool for monitoring CU usage.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/enterprise/capacity-planning-plan-deployment" target="_blank" rel="noopener">
+                  <div class="rc-title">Fabric Capacity Planning Guide →</div>
+                  <div class="rc-desc">Sizing a capacity from pilot through to production.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/fundamentals/workspace-license-mode" target="_blank" rel="noopener">
+                  <div class="rc-title">Reassign a Workspace to a Capacity →</div>
+                  <div class="rc-desc">License modes and how workspaces move between capacities.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-roles-new-workspaces" target="_blank" rel="noopener">
+                  <div class="rc-title">Roles in Workspaces →</div>
+                  <div class="rc-desc">Admin / Member / Contributor / Viewer and exactly what each can do.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-give-access-new-workspaces" target="_blank" rel="noopener">
+                  <div class="rc-title">Give Users Access to Workspaces →</div>
+                  <div class="rc-desc">Assigning roles to groups and managing workspace access.</div>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- /role-capacity-admin -->
 
           <div id="role-security-lead" class="ds-source-panel">
             <div class="ds-source-header">
