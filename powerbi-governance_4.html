@@ -3952,33 +3952,27 @@
           <div class="ds-nav-item" onclick="switchRole('role-data-engineer')">
             <div class="ds-nav-icon" style="background:#117865;">🔧</div>
             Data Engineer
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-bi-developer')">
             <div class="ds-nav-icon" style="background:#C4883A;">📊</div>
             BI / Report Developer
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-data-analyst')">
             <div class="ds-nav-icon" style="background:#5B8C5A;">📈</div>
             Data Analyst
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-governance-lead')">
             <div class="ds-nav-icon" style="background:#8B5E3C;">📋</div>
             Data Governance Lead
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-divider"></div>
           <div class="ds-nav-item" onclick="switchRole('role-senior-software-lead')">
             <div class="ds-nav-icon" style="background:#3D3A36;">⚙️</div>
             Senior Software Lead
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-coe-lead')">
             <div class="ds-nav-icon" style="background:#9F6B2D;">🎯</div>
             BI CoE Lead
-            <span class="ds-nav-coming">SOON</span>
           </div>
         </nav>
 
@@ -4290,7 +4284,7 @@
 
           </div><!-- /role-powerbi-admin -->
 
-          <!-- ═══ STUB PANELS — built once the template is approved ═══ -->
+          <!-- ═══ REMAINING ROLE PROFILES ═══ -->
           <div id="role-capacity-admin" class="ds-source-panel">
 
             <div class="ds-source-header">
@@ -5150,76 +5144,622 @@
           </div><!-- /role-data-architect -->
 
           <div id="role-data-engineer" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#117865;">🔧</div>
-              <div><h2>Data Engineer</h2>
-                <p>Builds and operates the pipelines that feed Power BI — ingestion, transformation, refresh orchestration, and data quality.</p></div>
+              <div>
+                <h2>Data Engineer</h2>
+                <p>Builds and operates the plumbing that feeds Power BI — ingestion, transformation through the medallion layers, refresh orchestration, and data quality. Turns the architect's blueprint into reliable, on-time data.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">R</div>
+                <div class="lbl">Responsible</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-eng-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-eng-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-eng-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-eng-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Data Engineer builds and operates the pipelines that feed Power BI — ingestion from source systems, transformation through the medallion layers (bronze → silver → gold), refresh orchestration, and data quality. They turn the Architect's blueprint into <em>working, reliable</em> pipelines. This is a heavily technical, delivery-focused role: query folding, incremental refresh, and making sure the gold layer lands on time, every time. They own <em>how data gets there and stays fresh</em> — not what it means (business / SMEs) or how it's modelled for reporting (the BI Developer).
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the Data Engineer Owns <span class="badge badge-gold">7 Core Responsibilities</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:22%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:34%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Ingestion</strong></td><td>Connect to sources (SQL, APIs, files, Databricks); land raw data in bronze; use shortcuts instead of copying where possible.</td><td>Builds to the Architect's pattern; doesn't decide the architecture.</td></tr>
+                    <tr><td>2</td><td><strong>Transformation</strong></td><td>Cleanse, conform and deduplicate through silver → gold using pipelines, dataflows Gen2, or Spark notebooks.</td><td>Implements standards; business logic / DAX belongs to the BI Developer.</td></tr>
+                    <tr><td>3</td><td><strong>Refresh orchestration</strong></td><td>Schedule and sequence refreshes and pipelines — dependencies, retries, and alerts on failure.</td><td>Owns reliability; capacity sizing is the Capacity Admin's.</td></tr>
+                    <tr><td>4</td><td><strong>Data-layer performance</strong></td><td>Query folding, incremental refresh, partitioning, file sizes, and V-Order on the gold layer.</td><td>Optimises the pipeline; report / DAX performance is the Developer's.</td></tr>
+                    <tr><td>5</td><td><strong>Data quality</strong></td><td>Validation rules, row counts, freshness checks, and reconciliation back to source.</td><td>Owns pipeline quality; business definitions belong to governance / SMEs.</td></tr>
+                    <tr><td>6</td><td><strong>Gateways &amp; connectivity</strong></td><td>Configure and maintain gateway connections and credentials for on-prem and VNet sources.</td><td>Uses the gateway; tenant gateway governance is the Admin's.</td></tr>
+                    <tr><td>7</td><td><strong>Operations &amp; monitoring</strong></td><td>Monitor pipeline runs, fix breakages, and handle source schema drift before it breaks reports.</td><td>Keeps the lights on; doesn't own the semantic model.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">Data Engineer</th><th style="width:17%;">Data Architect</th><th style="width:16%;">BI Developer</th><th style="width:17%;">Capacity Admin</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Design the pipeline pattern</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Build &amp; operate the pipeline</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Set the refresh schedule</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Tune folding / incremental refresh</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Respond to a refresh failure</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Right-size capacity for refresh load</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-eng-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>What does the Data Engineer own vs the Architect and the BI Developer?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>The Engineer owns the <strong>plumbing</strong> — ingestion, transformation, refresh, data quality — turning the Architect's blueprint into reliable pipelines.</p><p>The Architect decides the <em>pattern</em>; the Developer builds the semantic model and reports on top. The Engineer's line is simple: <em>"how the data gets there and stays fresh."</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>What is query folding, and why obsess over it?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Folding pushes your Power Query steps back to the source as a single native query, so the <strong>source does the work</strong> and only filtered / aggregated results travel. Folded queries are dramatically faster and lighter.</p><p>Break folding and the engine pulls everything, then transforms in memory — slow and costly. Put <em>Remove Columns</em> and filters early so they fold.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>When and why incremental refresh?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>For large fact tables, refreshing <em>everything</em> nightly is wasteful and fragile. Incremental refresh partitions by date and refreshes only the recent window while keeping history — faster refreshes, less capacity, fewer failures.</p><p>Pair it with query folding: the source must be able to fold the RangeStart / RangeEnd filters.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>Dataflows Gen2 vs pipelines vs notebooks — when each?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><ul><li><strong>Dataflows Gen2</strong> — low-code Power Query prep; great for reusable, business-friendly transformations.</li><li><strong>Pipelines</strong> (Data Factory) — orchestration: move data, sequence activities, schedule.</li><li><strong>Notebooks</strong> (Spark) — code-first, big-data transformation and complex logic.</li></ul><p>Often combined: a pipeline orchestrates notebooks / dataflows across the medallion layers.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>How do you make refreshes genuinely reliable?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Treat it as an <strong>operations discipline</strong>, not a one-time setup: sequence dependencies, add retries and failure alerts, monitor run history, reconcile row counts to source, and catch source schema drift early. The business only trusts the dashboard if it's fresh — reliability is a feature.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>Where does the Engineer's responsibility stop?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>At the gold-layer / semantic-model boundary. They don't define business meaning (governance / SMEs), build the DAX model or reports (Developer), own the architecture (Architect), or manage capacity (Capacity Admin). They own <strong>data arriving correct and on time</strong>.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-eng-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/onelake/onelake-medallion-lakehouse-architecture" target="_blank" rel="noopener"><div class="rc-title">Medallion Lakehouse Architecture →</div><div class="rc-desc">Bronze / silver / gold layering — the recommended Fabric data pattern.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview" target="_blank" rel="noopener"><div class="rc-title">What is a Lakehouse? →</div><div class="rc-desc">The store the engineer fills — tables, files, and the SQL endpoint.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-query/dataflows/best-practices-for-dimensional-model-using-dataflows" target="_blank" rel="noopener"><div class="rc-title">Dataflows: Dimensional Best Practices →</div><div class="rc-desc">Building star-schema-ready output with dataflows.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-query/power-query-folding" target="_blank" rel="noopener"><div class="rc-title">Query Folding →</div><div class="rc-desc">Push transformations to the source — the #1 refresh-performance lever.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/transform-model/service-dataflows-incremental-refresh" target="_blank" rel="noopener"><div class="rc-title">Incremental Refresh →</div><div class="rc-desc">Refresh only what changed on large fact tables.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction" target="_blank" rel="noopener"><div class="rc-title">Data Reduction Techniques →</div><div class="rc-desc">Trim the model so refreshes are fast and lean.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-data-engineer -->
 
           <div id="role-bi-developer" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#C4883A;">📊</div>
-              <div><h2>BI / Report Developer</h2>
-                <p>Builds semantic models and reports to standard — DAX, modelling, RLS implementation, and the certification path.</p></div>
+              <div>
+                <h2>BI / Report Developer</h2>
+                <p>Turns certified data into insight — building semantic models and reports to standard: the data model, DAX, RLS implementation, and report UX. Where the architecture meets the end user.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">R</div>
+                <div class="lbl">Responsible</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-dev-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-dev-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-dev-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-dev-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The BI / Report Developer turns governed data into insight — building the <em>semantic model</em> and <em>reports</em> to standard: the star-schema model, DAX measures, RLS implementation, and the report experience. They're where the architecture meets the end user. This is a technical, craft-focused role: dimensional modelling in Desktop, performant DAX, clean and accessible visuals, and getting models through certification. They build <em>on</em> the Architect's standards and the Engineer's data — they don't own the platform or the pipelines.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the BI Developer Owns <span class="badge badge-gold">7 Core Responsibilities</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:22%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:34%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Semantic model development</strong></td><td>Build the star-schema model in Desktop — relationships, measures, hierarchies, formatting, descriptions.</td><td>Builds to the Architect's standards; the gold data comes from the Engineer.</td></tr>
+                    <tr><td>2</td><td><strong>DAX &amp; calculations</strong></td><td>Author measures, time-intelligence and KPIs; optimise with variables and avoid context traps.</td><td>Owns report calc logic; not the source ETL.</td></tr>
+                    <tr><td>3</td><td><strong>RLS / OLS implementation</strong></td><td>Implement the security model's RLS / OLS rules in the model and Test-as-role before publishing.</td><td>Implements the Security Lead's standard; doesn't define policy.</td></tr>
+                    <tr><td>4</td><td><strong>Report design &amp; UX</strong></td><td>Layout, interactions, accessibility, mobile, and visual performance (Performance Analyzer).</td><td>Owns the report; data freshness is the Engineer's.</td></tr>
+                    <tr><td>5</td><td><strong>Performance tuning</strong></td><td>Reduce model size, manage cardinality, optimise DAX and visuals, use aggregations where needed.</td><td>Owns model / report performance; capacity is the Admin's.</td></tr>
+                    <tr><td>6</td><td><strong>Certification readiness</strong></td><td>Document the model, validate against standards, and request certification when ready.</td><td>Prepares for the gate; the Architect / Security / Governance approve.</td></tr>
+                    <tr><td>7</td><td><strong>Reuse &amp; connections</strong></td><td>Live-connect to shared models, request Build permission, and avoid duplicate models.</td><td>Promotes the single source of truth; doesn't create rogue models.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">BI Developer</th><th style="width:17%;">Data Architect</th><th style="width:16%;">Security Lead</th><th style="width:17%;">Data Engineer</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Build the semantic model</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Write the DAX measures</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Implement RLS on the model</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Optimise model / report performance</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Approve a model for certification</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Reuse vs build a new model</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-dev-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>What does the BI Developer own vs the Architect, Engineer, and Security Lead?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>The Developer builds the <strong>semantic model and reports</strong> on certified data — DAX, modelling, RLS implementation, UX.</p><p>The Architect sets the standard, the Engineer delivers the gold data, and Security defines the RLS policy. The Developer's line: <em>"turn governed data into insight, to standard."</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>What are the top DAX performance pitfalls?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><ul><li>Iterating (row-by-row) where you could aggregate.</li><li>Calculated columns that should be measures.</li><li>Bidirectional filters and high-cardinality columns.</li><li>Not using variables to avoid recomputation.</li></ul><p>Use <strong>Performance Analyzer</strong> and DAX Studio to find the slow visual. Model size and cardinality usually matter more than clever DAX.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>How do you keep a model performant?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>It's mostly model design: star schema, drop unused columns, reduce cardinality (e.g. split datetime), use integer keys, incremental refresh for big facts, and aggregations for very large models. <strong>A lean, well-shaped model beats query-time heroics.</strong></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>Build a new model, or reuse a shared one?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Default to <strong>reuse</strong> — live-connect to a certified shared model via Build permission. A new model per report fragments the truth and multiplies maintenance. Build new only for a genuinely distinct subject area, and aim to get it certified.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>How does a model actually get certified?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Build to the standard, document it, ensure RLS is tested and a sensitivity label applied, then request certification from the authorized reviewers. Certification signals <em>"trustworthy and authoritative"</em> — so the bar is high: quality validated, change-managed, and supported.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>Where does the Developer's role stop?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>At the data they consume and the platform they publish to. They don't build pipelines (Engineer), set the architecture standard (Architect), define security policy (Security Lead), or manage capacity / tenant (Admin). They own <strong>the model and the report</strong>.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-dev-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/star-schema" target="_blank" rel="noopener"><div class="rc-title">Understand Star Schema →</div><div class="rc-desc">The dimensional foundation every performant model is built on.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/rls-guidance" target="_blank" rel="noopener"><div class="rc-title">RLS Design Guidance →</div><div class="rc-desc">Implementing row-level security without the additive-roles trap.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank" rel="noopener"><div class="rc-title">Row-Level Security (RLS) →</div><div class="rc-desc">Defining roles and DAX rules, and Test-as-role.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/import-modeling-data-reduction" target="_blank" rel="noopener"><div class="rc-title">Data Reduction Techniques →</div><div class="rc-desc">Shrink the model for speed — the biggest performance lever.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-endorsement-overview" target="_blank" rel="noopener"><div class="rc-title">Endorsement: Promote &amp; Certify →</div><div class="rc-desc">The path that marks your model as authoritative.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-build-permissions" target="_blank" rel="noopener"><div class="rc-title">Build Permission →</div><div class="rc-desc">Reuse shared semantic models via live connection instead of duplicating.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-bi-developer -->
 
           <div id="role-data-analyst" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#5B8C5A;">📈</div>
-              <div><h2>Data Analyst</h2>
-                <p>Self-service author and consumer — explores certified data, builds team reports, and feeds requirements back to model owners.</p></div>
+              <div>
+                <h2>Data Analyst</h2>
+                <p>The bridge between the data and the business question. Explores certified models, builds team reports, surfaces insight, and feeds requirements back upstream. More analytical and business-facing than deeply technical.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">C</div>
+                <div class="lbl">Consulted</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-ana-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-ana-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-ana-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-ana-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Data Analyst is the bridge between the data and the business question. They explore certified semantic models, build team-level reports and ad-hoc analyses, surface insight, and feed requirements back to the model owners. This role is <em>more analytical and business-facing than deeply technical</em> — strong on data literacy, asking the right question, and storytelling; lighter on platform engineering. They consume governed data responsibly (the single source of truth) rather than building enterprise models. A reminder that <strong>not every role on a BI team is a builder</strong> — some create the most value by interpreting and communicating.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the Data Analyst Owns <span class="badge badge-gold">Analytical &amp; Business-facing</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:24%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:32%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Business questions</strong> <span class="badge badge-gold" style="font-size:0.55rem;">BUSINESS</span></td><td>Translate business problems into analytical questions; feed requirements to the model owners.</td><td>The voice of the business; doesn't build the enterprise model.</td></tr>
+                    <tr><td>2</td><td><strong>Self-service analysis</strong> <span class="badge badge-navy" style="font-size:0.55rem;">CRAFT</span></td><td>Explore certified models and build team reports / ad-hoc analyses (live connection, Analyze in Excel).</td><td>Builds on certified data; avoids creating duplicate rogue models.</td></tr>
+                    <tr><td>3</td><td><strong>Insight &amp; storytelling</strong> <span class="badge badge-gold" style="font-size:0.55rem;">BUSINESS</span></td><td>Turn data into a narrative decision-makers act on; apply visualisation best practice.</td><td>Owns the insight; not the data pipeline.</td></tr>
+                    <tr><td>4</td><td><strong>Data literacy</strong> <span class="badge badge-gold" style="font-size:0.55rem;">PEOPLE</span></td><td>Help colleagues read and interpret data correctly; champion good practice in the team.</td><td>Enablement within the team — org-wide is the CoE's.</td></tr>
+                    <tr><td>5</td><td><strong>Feedback loop</strong> <span class="badge badge-gold" style="font-size:0.55rem;">BUSINESS</span></td><td>Report data gaps, quality issues, and new metric needs upstream to engineers and owners.</td><td>Flags the issue; doesn't fix the pipeline.</td></tr>
+                    <tr><td>6</td><td><strong>Responsible consumption</strong> <span class="badge badge-navy" style="font-size:0.55rem;">CRAFT</span></td><td>Respect RLS and sensitivity labels; always work from certified sources.</td><td>Works within security; doesn't set policy.</td></tr>
+                    <tr><td>7</td><td><strong>Light modelling</strong> <span class="badge badge-navy" style="font-size:0.55rem;">CRAFT</span></td><td>Small composite / local models or measures for team needs, when genuinely justified.</td><td>Stays within managed self-service guardrails; escalates when it grows.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">Data Analyst</th><th style="width:16%;">BI Developer</th><th style="width:17%;">Data Architect</th><th style="width:17%;">Data Gov Lead</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Define a new business metric</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-a">A</span></td></tr>
+                    <tr><td><strong>Build a team / ad-hoc report</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Request a new certified model</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Interpret &amp; present insights</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Escalate a data-quality issue</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Promote a team report to certified</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-ana-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>Is the Data Analyst a technical role?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Only partly — and that's the point. The core skills are <strong>analytical and business-facing</strong>: framing the right question, exploring certified data, and telling a story that drives a decision.</p><p>There's some technical craft (a DAX measure, a local model), but an analyst's value is judged on <em>insight and communication</em>, not pipeline engineering.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>How does the analyst fit the single-source-of-truth model?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>They build on certified, shared semantic models via <strong>live connection and Build permission</strong> — not by exporting to Excel or spinning up duplicate models. Reuse keeps numbers consistent; the analyst adds the business lens on top of governed data.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>When should an analyst build their own model vs ask for a certified one?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Small, team-specific needs → a light local / composite model is fine within managed self-service guardrails. If it becomes widely used, business-critical, or starts duplicating enterprise data → <strong>escalate to the Developer / Architect</strong> to build (and certify) it properly. Don't let a personal model quietly become a production dependency.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>What's the analyst's role in data quality and governance?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>They're the <strong>early-warning system</strong>: closest to the data in daily use, they spot gaps, anomalies, and missing metrics and feed them upstream. They consume responsibly (respecting RLS and labels) and champion data literacy in their team — turning governance from a rulebook into everyday practice.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>How does an analyst avoid the "spreadmart" trap?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>By resisting the pull to export and build siloed spreadsheets. Stay connected to the certified model, use <strong>Analyze in Excel</strong> for live connectivity (not export), and push genuinely reusable work toward certification. One trustworthy source beats fifty private versions.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>Where does the analyst's role stop?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>They don't build enterprise pipelines or models, set architecture, or define security / governance policy. They're the <strong>business-facing consumer and self-service author</strong> — accountable for sound analysis and clear communication, consulted on what the data needs to answer.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-ana-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-usage-scenario-managed-self-service-bi" target="_blank" rel="noopener"><div class="rc-title">Managed Self-Service BI →</div><div class="rc-desc">The pattern: few shared models, many self-service reports on top.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-across-workspaces" target="_blank" rel="noopener"><div class="rc-title">Shared Semantic Models →</div><div class="rc-desc">Reuse certified models for a single version of the truth.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-build-permissions" target="_blank" rel="noopener"><div class="rc-title">Build Permission →</div><div class="rc-desc">How to connect to and build on an existing certified model.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/office-integration/service-analyze-in-excel" target="_blank" rel="noopener"><div class="rc-title">Analyze in Excel →</div><div class="rc-desc">Stay connected to the model instead of exporting data.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-endorsement-overview" target="_blank" rel="noopener"><div class="rc-title">Endorsement &amp; Certification →</div><div class="rc-desc">How to tell which models are trustworthy — and get yours endorsed.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/star-schema" target="_blank" rel="noopener"><div class="rc-title">Understand Star Schema →</div><div class="rc-desc">Read a model fluently — and build light ones correctly.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-data-analyst -->
 
           <div id="role-governance-lead" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#8B5E3C;">📋</div>
-              <div><h2>Data Governance Lead</h2>
-                <p>Chairs the governance model — policy, certification / endorsement, data classification, and the Center-of-Excellence operating rhythm.</p></div>
+              <div>
+                <h2>Data Governance Lead</h2>
+                <p>Chairs the operating model that keeps the estate trustworthy — policy, certification standards, data ownership, the catalog, and the governance cadence. A strategy-and-people role: defines "good", others implement it.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-gov-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-gov-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-gov-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-gov-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Data Governance Lead chairs the operating model that keeps the whole estate trustworthy — policy, certification / endorsement standards, data ownership and stewardship, the catalog, and the governance cadence. This is a <em>strategic, people-and-process role — not a technical build role</em>: setting the rules of the road, balancing control with self-service agility, and running the forums where decisions get made. They <strong>define "good"; others implement it.</strong> Success looks like a healthy data culture — not a thick rulebook nobody reads.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the Governance Lead Owns <span class="badge badge-gold">Strategy · Policy · People</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:24%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:32%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Policy &amp; framework</strong></td><td>Own the policies: what gets certified, who can publish, data classification, retention.</td><td>Sets policy with stakeholders; doesn't configure the tenant (Admin).</td></tr>
+                    <tr><td>2</td><td><strong>Certification standard</strong></td><td>Define what "certified" means and the process to earn it; authorize the reviewers.</td><td>Owns the standard; the Architect / Security do the technical sign-off.</td></tr>
+                    <tr><td>3</td><td><strong>Ownership &amp; stewardship</strong></td><td>Assign data owners and stewards per domain; make accountability explicit.</td><td>A people / accountability model, not a tool.</td></tr>
+                    <tr><td>4</td><td><strong>Catalog &amp; discoverability</strong></td><td>Govern the OneLake catalog, metadata, lineage, and the discoverability rules.</td><td>Owns findability and trust; metadata scanning is run by the Admin.</td></tr>
+                    <tr><td>5</td><td><strong>Governance cadence</strong></td><td>Run the governance board, the decision log, and the exceptions process.</td><td>Facilitation and decision-making, not delivery.</td></tr>
+                    <tr><td>6</td><td><strong>Control vs agility</strong></td><td>Decide where to centralise vs enable self-service — set guardrails, not gates.</td><td>A strategic posture, reviewed continuously.</td></tr>
+                    <tr><td>7</td><td><strong>Compliance alignment</strong></td><td>Map governance to regulatory needs; partner with Security on audits.</td><td>Sets requirements; Security / Admin operate the controls.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">Data Gov Lead</th><th style="width:16%;">PBI Admin</th><th style="width:17%;">Security Lead</th><th style="width:17%;">CoE Lead</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Set the certification standard</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Define the data-ownership model</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Govern catalog discoverability</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Approve a policy exception</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Set control-vs-self-service posture</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Run the governance board</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-gov-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>Is the Governance Lead a technical role?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p><strong>No — and it shouldn't be.</strong> It's a strategy, policy, and people role. The Governance Lead defines what "trustworthy data" means, who owns what, and how decisions get made — then runs the forums that keep it alive.</p><p>The technical controls (RLS, labels, tenant settings) are implemented by Security, the Admin, and developers. Governance is <em>leadership, not configuration.</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>Governance Lead vs the Power BI Admin vs the Security Lead — who does what?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>The Governance Lead sets <strong>policy and the operating model</strong> (the what &amp; why). The Admin <strong>configures the platform</strong> to enforce it (the switch). The Security Lead owns the <strong>protection model</strong> specifically (labels, RLS / OLS, DLP). Three roles, cleanly separated: <em>strategy → enablement → protection.</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>What does "certified" actually mean, and who decides?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Certified = meets the org's quality bar: validated data, documented, change-managed, supported, secured. The Governance Lead owns that <strong>definition</strong> and authorizes the reviewers; the Architect / Security do the technical sign-off.</p><p>It's a trust signal — it only works if the bar is real and applied consistently.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>How do you govern without killing self-service?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p><strong>Guardrails, not gates.</strong> Make the compliant path the easy path — certified models, templates, clear policy, enablement — so people self-serve correctly by default. Centralise what must be controlled (sensitive data, the single source of truth); decentralise the rest. Over-control just drives shadow BI.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>What does good governance look like day to day?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>A living cadence: a governance board that meets regularly, a decision log, clear data owners per domain, an exceptions process, and adoption metrics that show whether it's working. <strong>Healthy data culture is the real KPI</strong> — not the length of the policy document.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>Where does the Governance Lead's authority stop?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>They set policy and run the operating model, but don't configure the tenant, build content, or implement security controls. They're accountable for the <strong>framework and the culture</strong> — coherence, trust, and adoption — not the technical implementation.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-gov-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-governance" target="_blank" rel="noopener"><div class="rc-title">Fabric Adoption Roadmap: Governance →</div><div class="rc-desc">The operating model for governing analytics across the org.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-endorsement-overview" target="_blank" rel="noopener"><div class="rc-title">Endorsement: Promote &amp; Certify →</div><div class="rc-desc">The certification standard that marks content authoritative.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/governance/onelake-catalog" target="_blank" rel="noopener"><div class="rc-title">OneLake Catalog →</div><div class="rc-desc">Discoverability, ownership, and trust for data items.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/governance/metadata-scanning-overview" target="_blank" rel="noopener"><div class="rc-title">Metadata Scanning →</div><div class="rc-desc">Tenant-wide visibility of what content exists and who owns it.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-data-lineage" target="_blank" rel="noopener"><div class="rc-title">Data Lineage →</div><div class="rc-desc">Trace dependencies from source to report for impact and trust.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-bi-strategy-overview" target="_blank" rel="noopener"><div class="rc-title">BI Strategy →</div><div class="rc-desc">Strategic, tactical, and solution planning — the governance backbone.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-governance-lead -->
 
           <div id="role-senior-software-lead" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#3D3A36;">⚙️</div>
-              <div><h2>Senior Software Lead</h2>
-                <p>Owns engineering standards across the BI estate — source control, deployment pipelines, code review, and release management.</p></div>
+              <div>
+                <h2>Senior Software Lead</h2>
+                <p>Brings software-engineering discipline to the BI estate — source control, deployment pipelines, CI/CD, code review, and release management. Makes delivery repeatable, testable, and safe.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-ssl-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-ssl-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-ssl-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-ssl-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Senior Software Lead brings <em>software-engineering discipline</em> to the BI estate — source control, deployment pipelines, CI/CD, code review, and release management. As BI matures from "files on a share" into a managed product, this role makes delivery <strong>repeatable, testable, and safe</strong>. It's technical and process-focused: Git integration, dev / test / prod, automated deployment, standards for <code>.pbip</code> / TMDL, and mentoring the team on engineering rigor. They own <em>how content ships</em> — not what it contains.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the Senior Software Lead Owns <span class="badge badge-gold">Engineering Discipline</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:22%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:34%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Source control</strong></td><td>Git integration for workspaces; <code>.pbip</code> / TMDL under version control; a branching strategy.</td><td>Owns the workflow; not the model content itself.</td></tr>
+                    <tr><td>2</td><td><strong>Deployment pipelines / CI-CD</strong></td><td>Dev → test → prod via deployment pipelines or Azure DevOps / GitHub Actions.</td><td>Owns the release mechanism; capacity is the Admin's.</td></tr>
+                    <tr><td>3</td><td><strong>Release management</strong></td><td>Change control, versioning, rollback, and a predictable release cadence.</td><td>Owns the process; business sign-off is the content owner's.</td></tr>
+                    <tr><td>4</td><td><strong>Code / peer review</strong></td><td>Standards for reviewing DAX / M, reading model diffs, and PR practice.</td><td>Owns the quality gate; the Architect sets modelling standards.</td></tr>
+                    <tr><td>5</td><td><strong>Automated testing</strong></td><td>Best Practice Analyzer, smoke tests, and regression checks on key measures.</td><td>Owns test discipline; data-quality tests are the Engineer's.</td></tr>
+                    <tr><td>6</td><td><strong>Standards &amp; mentoring</strong></td><td>Naming, repo structure, documentation; coach engineers and developers on rigor.</td><td>Influence and standards, not delivery of each report.</td></tr>
+                    <tr><td>7</td><td><strong>Tooling &amp; DevEx</strong></td><td>Tabular Editor, ALM Toolkit, BPA, environments — reduce delivery friction.</td><td>Owns developer experience; doesn't own the platform.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">Software Lead</th><th style="width:16%;">BI Developer</th><th style="width:17%;">Data Architect</th><th style="width:17%;">PBI Admin</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Define the Git / branching workflow</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Set up deployment pipelines</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Approve a production release</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Define the code-review standard</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Build the actual model / report</strong></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Roll back a bad deployment</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-ssl-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>Why does BI need a "software lead"?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Because BI has outgrown ad-hoc <code>.pbix</code> files emailed around. At scale it <em>is</em> software: it needs version control, repeatable deployment, review, testing, and rollback. The Senior Software Lead brings that discipline so changes ship safely and the team can move fast <strong>without breaking production</strong>.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>How does ALM / CI-CD work in Power BI &amp; Fabric?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><ul><li><strong>Git integration</strong> version-controls workspace items (<code>.pbip</code> / TMDL as text → real diffs and PRs).</li><li><strong>Deployment pipelines</strong> promote content dev → test → prod with rules.</li><li>Or wire <strong>Azure DevOps / GitHub Actions</strong> for full CI/CD.</li></ul><p>The point: no more manual "republish to prod and pray."</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>What belongs in code review for a semantic model?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Model diffs (TMDL), DAX measures (correctness + performance), naming / standards conformance, RLS presence, and Best Practice Analyzer results. Review catches the issues that certification and users would otherwise find later.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>Where's the line between the Software Lead and the Architect / Developer?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>The <strong>Architect</strong> sets modelling standards (what good looks like). The <strong>Developer</strong> builds the model / report. The <strong>Software Lead</strong> owns how it's versioned, reviewed, tested, and shipped (how it reaches prod safely). Complementary, not overlapping.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>How do you introduce rigor without slowing the team?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Make the <strong>paved road the fast road</strong>: templates, a clean repo structure, automated checks in the pipeline, and mentoring rather than mandates. Start with the highest-risk content (certified, enterprise) and expand. Rigor should remove the fear of deploying — not add bureaucracy.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>Where does this role stop?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>They own delivery mechanics and engineering standards — not the data content, the architecture, or the platform. They make shipping <strong>safe and repeatable</strong>; what ships is the Developer's / Architect's, and where it runs is the Admin's.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-ssl-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines" target="_blank" rel="noopener"><div class="rc-title">Deployment Pipelines →</div><div class="rc-desc">Promote content through dev → test → prod stages.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/cicd/git-integration/intro-to-git-integration" target="_blank" rel="noopener"><div class="rc-title">Git Integration →</div><div class="rc-desc">Version-control workspace items with real diffs and PRs.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/assign-pipeline" target="_blank" rel="noopener"><div class="rc-title">Assign a Workspace to a Pipeline →</div><div class="rc-desc">Wiring workspaces into the deployment process.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-usage-scenario-enterprise-bi" target="_blank" rel="noopener"><div class="rc-title">Enterprise BI Usage Scenario →</div><div class="rc-desc">Stability, controlled deployment, and reuse at enterprise scale.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-usage-scenario-self-service-content-publishing" target="_blank" rel="noopener"><div class="rc-title">Self-Service Content Publishing →</div><div class="rc-desc">Using deployment pipelines for safe, repeatable publishing.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-content-lifecycle-management-validate" target="_blank" rel="noopener"><div class="rc-title">Validate Content →</div><div class="rc-desc">Testing and validation across the content lifecycle.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-senior-software-lead -->
 
           <div id="role-coe-lead" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#9F6B2D;">🎯</div>
-              <div><h2>BI Center of Excellence (CoE) Lead</h2>
-                <p>Runs the Center of Excellence — adoption, enablement, the champions network, and the bridge between business demand and platform governance.</p></div>
+              <div>
+                <h2>BI Center of Excellence (CoE) Lead</h2>
+                <p>Runs the engine of adoption — enablement, the champions network, training, and the bridge between business demand and platform governance. The most people-and-strategy role of all.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-coe-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-coe-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-coe-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-coe-resp" class="ds-content-panel active">
+              <div class="role-overview">
+                <strong>Who they are.</strong> The BI Center of Excellence (CoE) Lead runs the engine of adoption — enablement, the champions network, training, the centralized portal, and the bridge between business demand and platform governance. This is the <em>most people-and-strategy-focused role of all</em>: almost no hands-on building, all about culture, capability, and momentum. They turn a pile of tools and policies into a thriving data culture, and make sure the CoE earns its keep by <strong>accelerating the business</strong> — proof, again, that the most valuable BI roles aren't always the most technical.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">What the CoE Lead Owns <span class="badge badge-gold">Adoption · Enablement · People</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:4%;">#</th><th style="width:24%;">Responsibility</th><th style="width:40%;">What it covers</th><th style="width:32%;">Guardrail / boundary</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Adoption strategy</strong></td><td>Own the adoption roadmap — maturity, data culture, and executive sponsorship.</td><td>Strategy and influence; not platform configuration.</td></tr>
+                    <tr><td>2</td><td><strong>Enablement &amp; training</strong></td><td>The centralized portal, training program, template files, and office hours.</td><td>Capability-building; not building reports for teams.</td></tr>
+                    <tr><td>3</td><td><strong>Champions / community</strong></td><td>Recruit and nurture champions; run the community of practice; share wins.</td><td>A people network, not a tool.</td></tr>
+                    <tr><td>4</td><td><strong>Mentoring &amp; support</strong></td><td>Co-development, a help desk, and best-practice guidance for creators.</td><td>Coaching; doesn't own delivery.</td></tr>
+                    <tr><td>5</td><td><strong>Demand &amp; intake</strong></td><td>Prioritise requests, route work, and align BI to the business strategy.</td><td>Orchestration; the project teams deliver.</td></tr>
+                    <tr><td>6</td><td><strong>Bridge to governance</strong></td><td>Translate governance policy into practice; feed user friction back to the board.</td><td>Connective tissue; doesn't set policy or run the platform.</td></tr>
+                    <tr><td>7</td><td><strong>Measure &amp; evangelize</strong></td><td>Track adoption metrics, showcase value, and secure sponsorship / funding.</td><td>Owns the narrative; not the technical metrics plumbing.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">RACI — Decision Rights <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span></div>
+                <table class="gov-table">
+                  <thead><tr><th style="width:34%;">Governance decision</th><th style="width:16%;">CoE Lead</th><th style="width:17%;">Data Gov Lead</th><th style="width:16%;">PBI Admin</th><th style="width:17%;">Business Sponsor</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>Own the adoption roadmap</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Run the training program</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Build the champions network</strong></td><td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-c">C</span></td></tr>
+                    <tr><td><strong>Prioritise the BI demand backlog</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-a">A</span></td></tr>
+                    <tr><td><strong>Translate governance into practice</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-a">A</span></td><td><span class="role-raci-badge raci-c">C</span></td><td><span class="role-raci-badge raci-i">I</span></td></tr>
+                    <tr><td><strong>Secure executive sponsorship / funding</strong></td><td><span class="role-raci-badge raci-r">R</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-i">I</span></td><td><span class="role-raci-badge raci-a">A</span></td></tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp; <span class="role-raci-badge raci-a">A</span> Accountable &nbsp; <span class="role-raci-badge raci-c">C</span> Consulted &nbsp; <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-coe-qa" class="ds-content-panel">
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q1</span>Is the CoE Lead a technical role at all?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p><strong>Barely — and deliberately so.</strong> It's the most people-and-strategy role in the model: adoption, enablement, community, and demand. The CoE Lead rarely builds anything; their job is to make everyone else effective and keep BI aligned to what the business actually needs. <em>Influence is the whole job.</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q2</span>What is a BI Center of Excellence, in one line?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>A central team that <strong>accelerates and elevates self-service BI</strong> across the org — through enablement, standards, a champions network, and support — striking the balance between freedom and consistency. It's the bridge between the business and the platform / governance teams.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q3</span>CoE Lead vs Governance Lead — aren't they the same?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Closely related but distinct. The <strong>Governance Lead sets the rules</strong> (policy, certification, ownership). The <strong>CoE Lead drives adoption</strong> of those rules and the platform — training, champions, mentoring, demand. Governance defines "good"; the CoE makes "good" happen at scale and brings real-world friction back.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q4</span>How do you actually drive adoption?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Meet people where they are: a centralized portal, role-based training, templates, office hours, and a visible <strong>champions network</strong> that spreads good practice peer-to-peer. Showcase wins, secure executive sponsorship, and measure adoption so you can double down on what works. <em>Culture beats mandates.</em></p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q5</span>How does a CoE avoid becoming a bottleneck or an ivory tower?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>By <strong>enabling, not gatekeeping</strong>. Co-develop with teams, hand off capability rather than hoarding it, route demand instead of doing all the work, and stay close to real user pain. A CoE earns its place by accelerating the business — if it slows people down, it's failing.</p></div>
+              </div>
+              <div class="role-qa-item"><div class="role-qa-q" onclick="toggleQa(this)"><span class="role-qa-marker">Q6</span>How do you prove the CoE's value?<span class="role-qa-chevron">▶</span></div>
+                <div class="role-qa-a"><p>Adoption and impact metrics: active users, certified-content usage, time-to-insight, reduction in duplicate / shadow models, and the business outcomes the sponsor cares about. The CoE Lead owns that <strong>narrative</strong> and uses it to keep sponsorship and funding.</p></div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-coe-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap" target="_blank" rel="noopener"><div class="rc-title">Fabric Adoption Roadmap →</div><div class="rc-desc">The end-to-end framework for driving adoption and a data culture.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-mentoring-and-user-enablement" target="_blank" rel="noopener"><div class="rc-title">Mentoring &amp; User Enablement →</div><div class="rc-desc">Centralized portal, training, templates, and office hours.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-community-of-practice" target="_blank" rel="noopener"><div class="rc-title">Community of Practice →</div><div class="rc-desc">Building and running the champions network.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-data-culture" target="_blank" rel="noopener"><div class="rc-title">Data Culture →</div><div class="rc-desc">The cultural foundation a CoE is ultimately trying to build.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-bi-strategy-overview" target="_blank" rel="noopener"><div class="rc-title">BI Strategy →</div><div class="rc-desc">Aligning BI investment to business objectives.</div></a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-usage-scenario-managed-self-service-bi" target="_blank" rel="noopener"><div class="rc-title">Managed Self-Service BI →</div><div class="rc-desc">The balance of central control and self-service the CoE enables.</div></a>
+              </div>
+            </div>
+
+          </div><!-- /role-coe-lead -->
 
         </div><!-- /ds-content-area -->
       </div><!-- /ds-layout -->
