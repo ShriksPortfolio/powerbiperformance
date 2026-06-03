@@ -3944,7 +3944,6 @@
           <div class="ds-nav-item" onclick="switchRole('role-security-lead')">
             <div class="ds-nav-icon" style="background:#7A2E2E;">🔒</div>
             Security Lead
-            <span class="ds-nav-coming">SOON</span>
           </div>
           <div class="ds-nav-item" onclick="switchRole('role-data-architect')">
             <div class="ds-nav-icon" style="background:#4A4742;">🏛️</div>
@@ -4585,16 +4584,291 @@
           </div><!-- /role-capacity-admin -->
 
           <div id="role-security-lead" class="ds-source-panel">
+
             <div class="ds-source-header">
               <div class="ds-source-header-icon" style="background:#7A2E2E;">🔒</div>
-              <div><h2>Security Lead</h2>
-                <p>Owns the information-protection model: sensitivity-label taxonomy, RLS / OLS standards, DLP policy, and conditional access for BI.</p></div>
+              <div>
+                <h2>Security Lead</h2>
+                <p>Owns the information-protection model — the label taxonomy, the RLS / OLS standards, DLP policy, and conditional access. Defines <em>how</em> data is protected; others enable and implement it.</p>
+              </div>
+              <div class="ds-item-count">
+                <div class="num">A</div>
+                <div class="lbl">Accountable</div>
+              </div>
             </div>
-            <div class="grid-card" style="padding:3rem; text-align:center; color:var(--slate);">
-              <p style="font-size:1.1rem; margin-bottom:0.5rem;">🚧 Profile Coming Soon</p>
-              <p style="font-size:0.82rem;">Built out once the Power BI Administrator template is approved</p>
+
+            <!-- Sub-tabs -->
+            <div class="ds-subtabs">
+              <button class="ds-subtab active" onclick="switchDsSubtab('role-sec-resp', this)">
+                <span class="ds-subtab-icon">📋</span> Responsibilities &amp; RACI
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-sec-qa', this)">
+                <span class="ds-subtab-icon">❓</span> Governance Q&amp;A
+              </button>
+              <button class="ds-subtab" onclick="switchDsSubtab('role-sec-links', this)">
+                <span class="ds-subtab-icon">🔗</span> Resources
+              </button>
             </div>
-          </div>
+
+            <!-- ── SUB-TAB 1: RESPONSIBILITIES & RACI ── -->
+            <div id="role-sec-resp" class="ds-content-panel active">
+
+              <div class="role-overview">
+                <strong>Who they are.</strong> The Security Lead — usually InfoSec / Compliance working hand-in-hand with the BI CoE — owns the <em>what and why</em> of data protection: the sensitivity-label taxonomy, the RLS / OLS standards, DLP policy, conditional-access requirements, and the data-classification rules. They set the standard; the <strong>Power BI Admin enables</strong> the capability in the tenant; the <strong>model developer implements</strong> RLS / OLS in the model. The principle: protection is everyone's responsibility, so the Security Lead's job is to make the secure path <em>clear, testable, and auditable</em> — not to become the bottleneck every model waits on.
+              </div>
+
+              <div class="grid-card" style="margin-bottom:1.5rem;">
+                <div class="grid-card-header">
+                  What the Security Lead Owns
+                  <span class="badge badge-gold">7 Core Responsibilities</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:4%;">#</th>
+                      <th style="width:22%;">Responsibility</th>
+                      <th style="width:40%;">What it covers</th>
+                      <th style="width:34%;">Guardrail / boundary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Sensitivity-label taxonomy</strong></td>
+                      <td>Define the classification scheme (Public → Highly Confidential), label names, scope, and encryption / protection settings — built in Microsoft Purview.</td>
+                      <td>Owns the taxonomy; the Admin <em>enables</em> labels in the tenant. Security defines, doesn't flip the tenant switch.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>RLS / OLS standards</strong></td>
+                      <td>Set the patterns: dynamic RLS via UPN, deny-by-default, single-role-per-user, and mandatory Test-as-role before publish.</td>
+                      <td>Defines the standard and reviews it; the model developer authors it in Power BI Desktop.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Data loss prevention</strong></td>
+                      <td>Author DLP policies in Microsoft Purview — sensitive-info types, rules, policy tips, and admin alerts on Premium / Fabric workspaces.</td>
+                      <td>DLP is awareness + enforcement, not a refresh blocker; acts on alerts with the content owner.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Conditional access &amp; identity</strong></td>
+                      <td>Set conditional-access requirements for Power BI — MFA, compliant devices, IP ranges, block risky sign-in — via Microsoft Entra.</td>
+                      <td>Defines the requirement; the Entra / IT admin implements the policy.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>Classification &amp; residency policy</strong></td>
+                      <td>Decide what data may live in Power BI, residency / regulatory constraints, and which export formats are permitted.</td>
+                      <td>Sets policy; the Admin configures the matching export tenant settings.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td><strong>Threat monitoring</strong></td>
+                      <td>Defender for Cloud Apps real-time policies, SIEM / Sentinel integration, anomaly alerts, and review of security events in the audit log.</td>
+                      <td>Owns the security signal; coordinates the response with the Admin / CoE.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td><strong>Security review gate</strong></td>
+                      <td>Sign off the security posture of certified / endorsed datasets — RLS tested, label applied, no PII leakage.</td>
+                      <td>A review gate, not a build role — approves, doesn't develop the content.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="grid-card">
+                <div class="grid-card-header">
+                  RACI — Decision Rights
+                  <span class="badge badge-navy">R&nbsp;·&nbsp;A&nbsp;·&nbsp;C&nbsp;·&nbsp;I</span>
+                </div>
+                <table class="gov-table">
+                  <thead>
+                    <tr>
+                      <th style="width:34%;">Governance decision</th>
+                      <th style="width:16%;">Security Lead</th>
+                      <th style="width:16%;">PBI Admin</th>
+                      <th style="width:17%;">Model Developer</th>
+                      <th style="width:17%;">Data Gov Lead</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Define the label taxonomy</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Enable labels in the tenant</strong></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Implement RLS / OLS on a model</strong></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Author a DLP policy</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Set conditional-access rules</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Approve a certified dataset's security</strong></td>
+                      <td><span class="role-raci-badge raci-r">R</span><span class="role-raci-badge raci-a">A</span></td>
+                      <td><span class="role-raci-badge raci-i">I</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                      <td><span class="role-raci-badge raci-c">C</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="padding:0.75rem 1rem; font-size:0.7rem; color:var(--slate); border-top:1px solid rgba(45,43,40,0.05);">
+                  <span class="role-raci-badge raci-r">R</span> Responsible &nbsp;
+                  <span class="role-raci-badge raci-a">A</span> Accountable &nbsp;
+                  <span class="role-raci-badge raci-c">C</span> Consulted &nbsp;
+                  <span class="role-raci-badge raci-i">I</span> Informed
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SUB-TAB 2: GOVERNANCE Q&A ── -->
+            <div id="role-sec-qa" class="ds-content-panel">
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q1</span>
+                  What does the Security Lead own versus the Power BI Admin?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>The Security Lead owns the <strong>what and why</strong>: the label taxonomy, RLS / OLS standards, DLP policy, conditional-access requirements, and classification policy.</p>
+                  <p>The Power BI Admin owns the <strong>enablement</strong>: turning the labels / DLP capability on in the tenant and scoping the settings. Three hands, one chain — <em>Security defines the rule, the Admin flips the switch, the developer implements it in the model.</em></p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q2</span>
+                  RLS vs OLS — when do you use each, and what's the #1 pitfall?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li><strong>RLS</strong> filters <em>rows</em> (a salesperson sees only their region) via DAX role filters.</li>
+                    <li><strong>OLS</strong> hides <em>tables / columns</em> — and even their existence and metadata — via model roles (set with Tabular Editor).</li>
+                  </ul>
+                  <p>Both apply only to <strong>Viewers</strong>; Admin / Member / Contributor bypass them. The #1 pitfall: roles are <strong>additive</strong> — a user in two roles sees the <em>union</em>, so "once denied" is never guaranteed. Prefer one role per user, and always Test-as-role.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q3</span>
+                  Static vs dynamic RLS — what should the standard be?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p><strong>Static</strong> = a fixed filter per role (<code>[Region]="West"</code>). <strong>Dynamic</strong> = one role that filters by the signed-in user with <code>USERPRINCIPALNAME()</code> against a user-mapping table — far more scalable.</p>
+                  <p>Standard: prefer <strong>dynamic RLS</strong>, design <strong>deny-by-default</strong> (an unknown user returns no rows), and never rely on a fall-through <code>TRUE()</code> that leaks everything to an unexpected value.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q4</span>
+                  How does DLP for Power BI work, and what are its limits?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>DLP policies (Microsoft Purview) scan <strong>semantic models</strong> in Premium / Fabric workspaces on publish, republish, and refresh — matching sensitive-info types or sensitivity labels — then raise policy tips and admin alerts.</p>
+                  <p>Limits: it targets semantic models (not every item), it's <strong>not real-time</strong> (logs lag), and it skips service-principal-owned models. For real-time blocking, use <strong>Defender for Cloud Apps</strong>.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q5</span>
+                  Where does the Security Lead's authority stop?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <p>They don't enable the tenant capability (that's the Admin), don't author RLS in every model (developers do), and don't build content. They <strong>set standards, review, and gate</strong>. The aim is to make the secure path the <em>standard</em> path — not to be the bottleneck every model queues behind.</p>
+                </div>
+              </div>
+
+              <div class="role-qa-item">
+                <div class="role-qa-q" onclick="toggleQa(this)">
+                  <span class="role-qa-marker">Q6</span>
+                  How do you keep data protected once it leaves Power BI?
+                  <span class="role-qa-chevron">▶</span>
+                </div>
+                <div class="role-qa-a">
+                  <ul>
+                    <li>Sensitivity labels with encryption <strong>travel with exports</strong> — Excel, PDF, PowerPoint, .pbix — and Analyze-in-Excel.</li>
+                    <li><strong>Default + mandatory</strong> label policies catch unlabeled content.</li>
+                    <li>Export <strong>tenant settings</strong> restrict risky formats; Defender for Cloud Apps can block downloads of Highly-Restricted content in real time.</li>
+                  </ul>
+                  <p>Protection has to follow the data — not stop at the service boundary.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ── SUB-TAB 3: RESOURCES ── -->
+            <div id="role-sec-links" class="ds-content-panel">
+              <div class="role-resource-grid">
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/enterprise/powerbi/service-security-sensitivity-label-overview" target="_blank" rel="noopener">
+                  <div class="rc-title">Sensitivity Labels in Power BI →</div>
+                  <div class="rc-desc">How Purview Information Protection labels classify and protect content.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-info-protection" target="_blank" rel="noopener">
+                  <div class="rc-title">Information Protection Planning →</div>
+                  <div class="rc-desc">Designing the taxonomy and rolling out labels at tenant scale.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-data-loss-prevention" target="_blank" rel="noopener">
+                  <div class="rc-title">Data Loss Prevention Planning →</div>
+                  <div class="rc-desc">DLP rules, policy tips, and admin alerting for semantic models.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/purview/dlp-powerbi-get-started" target="_blank" rel="noopener">
+                  <div class="rc-title">Get Started with DLP for Fabric &amp; Power BI →</div>
+                  <div class="rc-desc">Setting up DLP in Microsoft Purview, and exactly when it evaluates.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security" target="_blank" rel="noopener">
+                  <div class="rc-title">Row-Level Security (RLS) →</div>
+                  <div class="rc-desc">Defining roles and DAX rules; static and dynamic patterns.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/rls-guidance" target="_blank" rel="noopener">
+                  <div class="rc-title">RLS Design Guidance →</div>
+                  <div class="rc-desc">The additive-roles trap, deny-by-default, and validating roles.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/security/service-admin-object-level-security" target="_blank" rel="noopener">
+                  <div class="rc-title">Object-Level Security (OLS) →</div>
+                  <div class="rc-desc">Hiding tables, columns, and their metadata with model roles.</div>
+                </a>
+                <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-security-tenant-level-planning" target="_blank" rel="noopener">
+                  <div class="rc-title">Tenant-Level Security Planning →</div>
+                  <div class="rc-desc">Entra integration, conditional access, and high-level strategy.</div>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- /role-security-lead -->
 
           <div id="role-data-architect" class="ds-source-panel">
             <div class="ds-source-header">
