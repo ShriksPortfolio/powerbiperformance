@@ -1039,10 +1039,12 @@
   .wow-fmt-head { font-weight: 600; }
 
   /* Editorial prose in Lora for the magazine feel (UI/tables stay Poppins) */
-  .role-overview, .ds-source-header p, .intro-banner p,
+  .role-overview, .ds-source-header p,
   .wow-intro, .role-qa-a, .frole-row p, .frole-row {
     font-family: var(--serif);
   }
+  /* Intro lede stays clean sans — it runs wide, where serif reads dense */
+  .intro-banner p { font-family: var(--sans); font-size: 0.85rem; line-height: 1.8; color: var(--soft); }
   .role-overview { font-size: 0.9rem; line-height: 1.78; }
 
   /* Hairline borders, flat cream surfaces (no pure white) */
