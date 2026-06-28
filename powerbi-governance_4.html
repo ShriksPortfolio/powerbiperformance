@@ -3156,7 +3156,7 @@
 
             <!-- DATA INFRASTRUCTURE (7) -->
             <div id="bp-st-infra" class="ds-source-panel active">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#453f38;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div><h2>Data Infrastructure</h2><p>Sources, capacity, storage and the foundation everything else is built on.</p></div><div class="ds-item-count"><div class="num">7</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#453f38;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div><h2>Data Infrastructure</h2><p>Sources, capacity, storage and the foundation everything else is built on.</p></div><div class="ds-item-count"><div class="num">12</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Select the correct capacity type</div><div class="cd">Match the licence to the workload — Pro · PPU · Premium (P-SKU) · Fabric (F-SKU).</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Separate capacities when CPU is over-utilised</div><div class="cd">Isolate heavy workloads so one model can't starve the rest.</div></div>
@@ -3165,12 +3165,17 @@
                 <div class="bp-card"><div class="ci">5</div><div class="ct">Enable Large Dataset Storage Format</div><div class="cd">Required for big models and incremental refresh at scale.</div></div>
                 <div class="bp-card"><div class="ci">6</div><div class="ct">Turn on Query Caching</div><div class="cd">Serve repeated queries from cache to cut report load times.</div></div>
                 <div class="bp-card"><div class="ci">7</div><div class="ct">Co-locate Power BI &amp; source data</div><div class="cd">Keep capacity near the source to avoid cross-region latency on refresh.</div></div>
+                <div class="bp-card"><div class="ci">8</div><div class="ct">Cluster the data gateway (HA)</div><div class="cd">Install an on-prem gateway cluster for high availability and load balancing; stay on a supported version.</div></div>
+                <div class="bp-card"><div class="ci">9</div><div class="ct">Use service principals for source auth</div><div class="cd">App registrations / managed identity, not personal accounts &mdash; survives staff changes and enables automation.</div></div>
+                <div class="bp-card"><div class="ci">10</div><div class="ct">Isolate the network</div><div class="cd">Private Link for inbound, VNet data gateway for outbound &mdash; keep traffic off the public internet.</div></div>
+                <div class="bp-card"><div class="ci">11</div><div class="ct">Stand up Dev &rarr; Test &rarr; Prod</div><div class="cd">Separate workspaces + deployment pipelines from day one, not bolted on later.</div></div>
+                <div class="bp-card"><div class="ci">12</div><div class="ct">Monitor capacity health</div><div class="cd">The Fabric Capacity Metrics app &mdash; watch CU utilisation, smoothing and throttling before users feel it.</div></div>
               </div>
             </div>
 
             <!-- DATA INGESTION (10) -->
             <div id="bp-st-integration" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#443e36;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">10</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#443e36;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">16</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Move transformation logic to the database</div><div class="cd">Let the source do the heavy lifting; keep the model lean and folding-friendly.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Assess model structure with VertiPaq Analyser</div><div class="cd">Find the columns and tables bloating the model before they hurt.</div></div>
@@ -3182,12 +3187,18 @@
                 <div class="bp-card"><div class="ci">8</div><div class="ct">Out-of-hours refresh schedules</div><div class="cd">Run heavy refreshes off-peak to protect interactive performance.</div></div>
                 <div class="bp-card"><div class="ci">9</div><div class="ct">Partition large tables for parallel refresh</div><div class="cd">Refresh partitions concurrently to cut total refresh time.</div></div>
                 <div class="bp-card"><div class="ci">10</div><div class="ct">Partition via a custom refresh script</div><div class="cd">Script partition refresh (TMSL/XMLA) for fine-grained control.</div></div>
+                <div class="bp-card" style="border-color:rgba(217,119,87,0.4);"><div class="ci">11</div><div class="ct">Parameterise data sources</div><div class="cd">Parameters for server / database / environment so you can repoint dev&rarr;test&rarr;prod without editing a single query.</div></div>
+                <div class="bp-card" style="border-color:rgba(217,119,87,0.4);"><div class="ci">12</div><div class="ct">Load tables only &mdash; no ETL in Power Query</div><div class="cd">Keep Power Query to thin connect-and-load steps; do real transformation upstream (DB views, dataflows, notebooks).</div></div>
+                <div class="bp-card"><div class="ci">13</div><div class="ct">Preserve query folding end-to-end</div><div class="cd">Keep every step foldable so the source does the work &mdash; check &ldquo;View Native Query&rdquo; to confirm.</div></div>
+                <div class="bp-card"><div class="ci">14</div><div class="ct">Disable load on staging queries</div><div class="cd">Use reference queries and load only what the model needs; don&rsquo;t load intermediates.</div></div>
+                <div class="bp-card"><div class="ci">15</div><div class="ct">Set privacy levels correctly</div><div class="cd">Mismatched privacy levels trip the formula firewall and silently kill query folding.</div></div>
+                <div class="bp-card"><div class="ci">16</div><div class="ct">Reusable prep with Dataflows Gen2</div><div class="cd">Separate data prep from the model and reuse it across datasets and teams.</div></div>
               </div>
             </div>
 
             <!-- SEMANTIC MODELLING (15 + 5 unit testing + 2 external) -->
             <div id="bp-st-modelling" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#50483f;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">22</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#50483f;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">28</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Adopt a star schema data model</div><div class="cd">Conformed dimensions + facts — the engine's native, fastest shape.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Move business logic back to the source</div><div class="cd">Calculate once upstream, not in every downstream model.</div></div>
@@ -3211,6 +3222,12 @@
                 <div class="bp-card" style="border-color:rgba(217,119,87,0.35);"><div class="ci">20</div><div class="ct">Automate tests in the pipeline 🧪</div><div class="cd">Run BPA + measure tests as a deployment gate (dev→test→prod).</div></div>
                 <div class="bp-card" style="border-color:rgba(123,141,166,0.4);"><div class="ci">21</div><div class="ct">RLS for external users (Azure B2B) 🔗</div><div class="cd">Guests sign in via Microsoft Entra External ID (B2B); map their UPN in the RLS table so they see only their slice.</div></div>
                 <div class="bp-card" style="border-color:rgba(123,141,166,0.4);"><div class="ci">22</div><div class="ct">Validate external RLS &amp; sharing 🔗</div><div class="cd">Test-as-role with the guest UPN; confirm B2B users resolve to the right rows before you share externally.</div></div>
+                <div class="bp-card"><div class="ci">23</div><div class="ct">Mark your date table as a Date table</div><div class="cd">Time-intelligence only works correctly on a properly marked, contiguous date dimension.</div></div>
+                <div class="bp-card"><div class="ci">24</div><div class="ct">Use integer surrogate keys</div><div class="cd">Relate on narrow integer keys, not natural/string keys &mdash; smaller dictionaries, faster joins.</div></div>
+                <div class="bp-card"><div class="ci">25</div><div class="ct">Hide foreign keys &amp; technical columns</div><div class="cd">Keep the field list clean &mdash; hide anything report authors shouldn&rsquo;t pick.</div></div>
+                <div class="bp-card"><div class="ci">26</div><div class="ct">Set summarization &amp; data categories</div><div class="cd">Stop keys auto-summing; set geography / URL / image categories where they help.</div></div>
+                <div class="bp-card"><div class="ci">27</div><div class="ct">Add display folders, descriptions &amp; synonyms</div><div class="cd">Usability for authors and better Copilot / Q&amp;A answers.</div></div>
+                <div class="bp-card"><div class="ci">28</div><div class="ct">Use aggregations for very large models</div><div class="cd">Pre-aggregate so big Import / DirectQuery models stay fast.</div></div>
               </div>
             </div>
 
