@@ -957,6 +957,11 @@
   .bp-mode { font-family:var(--sans); font-size:0.78rem; font-weight:500; color:var(--soft); background:transparent; border:0.5px solid var(--border); border-radius:999px; padding:0.5rem 1.15rem; cursor:pointer; transition:all .3s cubic-bezier(.4,0,.2,1); }
   .bp-mode:hover { border-color:var(--mid-gray); color:var(--ink); }
   .bp-mode.active { background:var(--coral); color:var(--cream); border-color:var(--coral); }
+  .bp-search-wrap { margin-left:auto; display:flex; align-items:center; gap:0.5rem; background:var(--cream); border:0.5px solid var(--border); border-radius:999px; padding:0.4rem 0.95rem; transition:border-color .25s ease; }
+  .bp-search-wrap:focus-within { border-color:var(--coral); }
+  .bp-search { border:0; background:transparent; outline:none; font-family:var(--sans); font-size:0.8rem; color:var(--ink); min-width:200px; }
+  .bp-search::placeholder { color:var(--muted); }
+  #bp-search-empty { font-family:var(--serif); font-size:0.86rem; color:var(--soft); padding:1.4rem; text-align:center; }
 
   .bp-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:0.85rem; }
   .bp-card { background:var(--cream); border:0.5px solid var(--border); border-radius:12px; padding:0.95rem 1.1rem; }
@@ -3083,7 +3088,12 @@
       <div class="bp-toggle">
         <button class="bp-mode active" onclick="switchBpMode('pyramid')">🔺 Pyramid</button>
         <button class="bp-mode" onclick="switchBpMode('detailed')">☰ Detailed</button>
+        <div class="bp-search-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888780" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="bp-search" type="text" placeholder="Search best practices…" oninput="bpSearch(this.value)">
+        </div>
       </div>
+      <div id="bp-search-empty" style="display:none;"></div>
 
       <!-- ═══════════ PYRAMID MODE (high-level) ═══════════ -->
       <div id="bp-pyramid-mode">
@@ -6154,6 +6164,44 @@
     var dbtn = document.querySelector('.bp-mode[onclick*="detailed"]');
     if (dbtn) dbtn.classList.add('active');
     selectBpStage(stageId);
+  }
+
+  // Best Practices — search the practices across every stage
+  function bpSearch(q) {
+    q = (q || '').trim().toLowerCase();
+    var detailed = document.getElementById('bp-detailed-mode');
+    var pyramid = document.getElementById('bp-pyramid-mode');
+    var panels = detailed.querySelectorAll('.ds-source-panel');
+    var empty = document.getElementById('bp-search-empty');
+    if (q === '') {
+      panels.forEach(function (p) {
+        p.style.display = '';
+        p.querySelectorAll('.bp-card, .vp').forEach(function (c) { c.style.display = ''; });
+      });
+      if (empty) empty.style.display = 'none';
+      return;
+    }
+    pyramid.style.display = 'none';
+    detailed.style.display = 'block';
+    document.querySelectorAll('.bp-mode').forEach(function (b) { b.classList.remove('active'); });
+    var dbtn2 = document.querySelector('.bp-mode[onclick*="detailed"]');
+    if (dbtn2) dbtn2.classList.add('active');
+    var total = 0;
+    panels.forEach(function (p) {
+      var matches = 0;
+      p.querySelectorAll('.vp').forEach(function (v) { v.style.display = 'none'; });
+      p.querySelectorAll('.bp-card').forEach(function (c) {
+        var hit = c.textContent.toLowerCase().indexOf(q) > -1;
+        c.style.display = hit ? '' : 'none';
+        if (hit) matches++;
+      });
+      p.style.display = matches > 0 ? 'block' : 'none';
+      total += matches;
+    });
+    if (empty) {
+      empty.textContent = total === 0 ? 'No practices match “' + q + '”. Try another term.' : '';
+      empty.style.display = total === 0 ? 'block' : 'none';
+    }
   }
 </script>
 
