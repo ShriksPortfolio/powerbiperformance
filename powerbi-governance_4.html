@@ -945,6 +945,19 @@
     line-height: 1.55;
   }
 
+  /* ═══ FABRIC MANAGEMENT — role cards ═══ */
+  .frole { display: flex; gap: 1.1rem; align-items: flex-start; border-radius: 16px; padding: 1.15rem 1.4rem; margin-bottom: 1rem; }
+  .frole-num { width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; margin-top: 0.15rem; font-family: 'Fraunces', serif; }
+  .frole-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.08rem; color: var(--dark); margin-bottom: 0.5rem; }
+  .frole-row { font-size: 0.83rem; color: #4A4842; line-height: 1.55; margin-bottom: 0.4rem; display: flex; gap: 0.6rem; align-items: baseline; }
+  .frole-row:last-child { margin-bottom: 0; }
+  .frole-label { flex-shrink: 0; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.06em; color: var(--slate); text-transform: uppercase; min-width: 42px; }
+  .frole-when { flex-shrink: 0; font-size: 0.56rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; padding: 0.18rem 0.5rem; border-radius: 5px; }
+  .t-amber { background: #FBF2E1; } .t-amber .frole-num, .t-amber .frole-when { background: #C4883A; }
+  .t-purple { background: #EFEAF6; } .t-purple .frole-num, .t-purple .frole-when { background: #7A6BA8; }
+  .t-green { background: #E9F2E7; } .t-green .frole-num, .t-green .frole-when { background: #5B8C5A; }
+  .t-blue { background: #E6EEF4; } .t-blue .frole-num, .t-blue .frole-when { background: #2D6A9F; }
+
   /* ═══ WAYS OF WORKING ═══ */
   .wow-intro { font-size: 0.86rem; color: var(--slate); line-height: 1.7; max-width: 880px; margin-bottom: 1.5rem; }
   .wow-spectrum {
@@ -4023,6 +4036,12 @@
             <div class="ds-nav-icon" style="background:#9F6B2D;">🎯</div>
             BI CoE Lead
           </div>
+          <div class="ds-nav-divider"></div>
+          <div class="ds-sidebar-title">Fabric Management</div>
+          <div class="ds-nav-item" onclick="switchRole('role-fabric-mgmt')">
+            <div class="ds-nav-icon" style="background:#5B3A8C;">🧬</div>
+            Which role do I need?
+          </div>
         </nav>
 
         <!-- ROLE CONTENT AREA -->
@@ -5809,6 +5828,54 @@
             </div>
 
           </div><!-- /role-coe-lead -->
+
+          <!-- ═══ FABRIC MANAGEMENT (card overview) ═══ -->
+          <div id="role-fabric-mgmt" class="ds-source-panel">
+            <div class="ds-source-header">
+              <div class="ds-source-header-icon" style="background:#5B3A8C;">🧬</div>
+              <div>
+                <h2>Fabric Management — which role do I need?</h2>
+                <p>A distinct cluster from the Power BI governance roles, focused on running the Microsoft Fabric platform itself. Each card: what they own, and the moment to bring them in.</p>
+              </div>
+            </div>
+
+            <div class="frole t-amber">
+              <div class="frole-num">1</div>
+              <div>
+                <div class="frole-title">🏗 Fabric Architect</div>
+                <div class="frole-row"><span class="frole-label">Owns</span> Target architecture, integration, governance, security, cost and migration.</div>
+                <div class="frole-row"><span class="frole-when">Bring them in when</span> You're scoping a build or migration — or recovering one that went wrong.</div>
+              </div>
+            </div>
+
+            <div class="frole t-purple">
+              <div class="frole-num">2</div>
+              <div>
+                <div class="frole-title">🔧 Fabric Engineer</div>
+                <div class="frole-row"><span class="frole-label">Owns</span> Pipelines, notebooks, PySpark, medallion end-to-end, DevOps and CI/CD.</div>
+                <div class="frole-row"><span class="frole-when">Bring them in when</span> You're building or running the platform itself, not just reporting on it.</div>
+              </div>
+            </div>
+
+            <div class="frole t-green">
+              <div class="frole-num">3</div>
+              <div>
+                <div class="frole-title">🧩 Fabric Domain Lead</div>
+                <div class="frole-row"><span class="frole-label">Owns</span> A business domain's workspaces, data products and federated governance.</div>
+                <div class="frole-row"><span class="frole-when">Bring them in when</span> Data mesh — multiple teams own different domains and you need clear ownership.</div>
+              </div>
+            </div>
+
+            <div class="frole t-blue">
+              <div class="frole-num">4</div>
+              <div>
+                <div class="frole-title">💰 Fabric Capacity &amp; FinOps Lead</div>
+                <div class="frole-row"><span class="frole-label">Owns</span> F-SKU capacity, CU monitoring, autoscale, throttling, cost allocation and chargeback.</div>
+                <div class="frole-row"><span class="frole-when">Bring them in when</span> Capacity spend is climbing and you need to control and attribute it.</div>
+              </div>
+            </div>
+
+          </div><!-- /role-fabric-mgmt -->
 
         </div><!-- /ds-content-area -->
       </div><!-- /ds-layout -->
