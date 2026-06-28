@@ -3175,7 +3175,7 @@
 
             <!-- DATA INGESTION (10) -->
             <div id="bp-st-integration" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#443e36;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">17</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#443e36;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">18</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Move transformation logic to the database</div><div class="cd">Let the source do the heavy lifting; keep the model lean and folding-friendly.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Assess model structure with VertiPaq Analyser</div><div class="cd">Find the columns and tables bloating the model before they hurt.</div></div>
@@ -3194,6 +3194,7 @@
                 <div class="bp-card"><div class="ci">15</div><div class="ct">Set privacy levels correctly</div><div class="cd">Mismatched privacy levels trip the formula firewall and silently kill query folding.</div></div>
                 <div class="bp-card"><div class="ci">16</div><div class="ct">Reusable prep with Dataflows Gen2</div><div class="cd">Separate data prep from the model and reuse it across datasets and teams.</div></div>
                 <div class="bp-card" style="border-color:rgba(217,119,87,0.4);"><div class="ci">17</div><div class="ct">Heavy ETL &rarr; Fabric notebooks</div><div class="cd">Dataflows Gen2 are convenient but CU-heavy at scale &mdash; push large or complex transformation into Fabric (Spark) notebooks for cost and speed.</div></div>
+                <div class="bp-card" style="border-color:rgba(217,119,87,0.4);"><div class="ci">18</div><div class="ct">Load 2&ndash;3 years, not all of history</div><div class="cd">Most analysis only needs ~2 years (3 at a push). Capping the window keeps the model lean and refreshes fast &mdash; use a source filter or RangeStart/RangeEnd.</div></div>
               </div>
             </div>
 
