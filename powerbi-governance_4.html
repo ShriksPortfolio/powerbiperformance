@@ -945,6 +945,54 @@
     line-height: 1.55;
   }
 
+  /* ═══ WAYS OF WORKING ═══ */
+  .wow-intro { font-size: 0.86rem; color: var(--slate); line-height: 1.7; max-width: 880px; margin-bottom: 1.5rem; }
+  .wow-spectrum {
+    background: linear-gradient(135deg, var(--white) 0%, #FBF7F1 100%);
+    border: 1px solid rgba(45,43,40,0.07); border-radius: 18px;
+    padding: 1.6rem 1.75rem 1.4rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(45,43,40,0.03);
+  }
+  .wow-spectrum-head { display: flex; justify-content: space-between; font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin-bottom: 0.5rem; }
+  .wow-spectrum-bar { height: 8px; border-radius: 99px; background: linear-gradient(90deg, #C4653A 0%, #C4883A 45%, #5B8C5A 100%); margin-bottom: 1.1rem; }
+  .wow-stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .wow-stop { position: relative; padding-left: 1rem; }
+  .wow-stop::before { content: ''; position: absolute; left: 0; top: 0.3rem; width: 9px; height: 9px; border-radius: 50%; }
+  .wow-stop.s1::before { background: #C4653A; }
+  .wow-stop.s2::before { background: #C4883A; }
+  .wow-stop.s3::before { background: #5B8C5A; }
+  .wow-stop.s4::before { background: var(--dark); }
+  .wow-stop .wow-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.95rem; color: var(--dark); }
+  .wow-stop .wow-desc { font-size: 0.72rem; color: var(--slate); line-height: 1.5; margin-top: 0.15rem; }
+  .wow-fmt-head { font-family: 'Fraunces', serif; font-weight: 700; font-size: 0.92rem; color: var(--dark); }
+  .wow-fmt-sub { font-size: 0.64rem; color: var(--slate); font-weight: 500; text-transform: none; letter-spacing: 0; }
+  .wow-yes { color: #5B8C5A; font-weight: 700; }
+  .wow-no { color: #C0563E; font-weight: 700; }
+  .wow-partial { color: #C4883A; font-weight: 700; }
+  .wow-pill { display: inline-block; font-size: 0.62rem; font-weight: 700; padding: 0.18rem 0.6rem; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .wow-pill-low { background: #FBEAE4; color: #C0563E; }
+  .wow-pill-mid { background: #FDF3E7; color: #C4883A; }
+  .wow-pill-high { background: #EAF3E9; color: #4F7E4E; }
+  .wow-tool { display: inline-block; font-size: 0.66rem; background: rgba(45,43,40,0.05); color: #5A5852; padding: 0.15rem 0.5rem; border-radius: 6px; margin: 0 0.25rem 0.25rem 0; }
+  .wow-skills { font-size: 0.66rem; color: var(--slate); margin-top: 0.35rem; font-style: italic; }
+  .wow-fabric { background: linear-gradient(135deg, #2D2B28 0%, #3D3A36 100%); color: #EDE8E0; border-radius: 18px; padding: 1.6rem 1.75rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+  .wow-fabric::after { content: '⬢'; position: absolute; right: 1.4rem; top: 0.5rem; font-size: 5rem; color: rgba(196,136,58,0.13); }
+  .wow-fabric .wow-glabel { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.3rem; }
+  .wow-fabric h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; margin: 0 0 0.4rem; color: #F3EEE6; }
+  .wow-fabric p { font-size: 0.82rem; color: #C9C3B9; max-width: 780px; line-height: 1.65; margin: 0 0 1.1rem; }
+  .wow-fgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; max-width: 860px; }
+  .wow-fitem { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 11px; padding: 0.7rem 0.9rem; }
+  .wow-fitem .wow-ft { font-weight: 600; font-size: 0.8rem; color: #F3EEE6; }
+  .wow-fitem .wow-fd { font-size: 0.7rem; color: #A8A299; line-height: 1.5; margin-top: 0.15rem; }
+  .wow-sec-label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin: 0 0 0.7rem; }
+  .wow-when { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; margin-bottom: 1.5rem; }
+  .wow-when-card { background: var(--white); border: 1px solid rgba(45,43,40,0.07); border-radius: 13px; padding: 0.95rem 1.05rem; }
+  .wow-when-card .wow-wq { font-size: 0.7rem; color: var(--slate); margin-bottom: 0.3rem; }
+  .wow-when-card .wow-wa { font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.95rem; color: var(--accent); }
+  @media (max-width: 1100px) {
+    .wow-stops, .wow-when { grid-template-columns: repeat(2, 1fr); }
+    .wow-fgrid { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 1100px) {
     .ds-layout { grid-template-columns: 1fr; }
     .ds-sidebar { position: static; }
@@ -1086,6 +1134,7 @@
       <button class="view-toggle" onclick="switchView('bestpractices')">🔺 Enterprise Best Practices</button>
       <button class="view-toggle" onclick="switchView('datasources')">🔌 Data Source Playbooks</button>
       <button class="view-toggle" onclick="switchView('roleprofiles')">👤 Role Profiles</button>
+      <button class="view-toggle" onclick="switchView('waysofworking')">🔀 Ways of Working</button>
     </div>
 
     <!-- ═══════════════════════════════════════════ -->
@@ -5766,6 +5815,94 @@
     </div><!-- /view-roleprofiles -->
 
 
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- VIEW 5: WAYS OF WORKING                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="view-waysofworking" style="display:none;">
+
+      <p class="wow-intro">The maturity spectrum of how you author, version, and ship Power BI content — from quick solo reporting to fully engineered, source-controlled enterprise delivery. The same artifact, very different ways of working.</p>
+
+      <!-- Maturity spectrum -->
+      <div class="wow-spectrum">
+        <div class="wow-spectrum-head"><span>Solo · Simple</span><span>Enterprise · Engineered</span></div>
+        <div class="wow-spectrum-bar"></div>
+        <div class="wow-stops">
+          <div class="wow-stop s1"><div class="wow-name">PBIX</div><div class="wow-desc">Single binary file. Quick, solo, desktop-first.</div></div>
+          <div class="wow-stop s2"><div class="wow-name">PBIT</div><div class="wow-desc">Template — structure without data. A reusable starting point.</div></div>
+          <div class="wow-stop s3"><div class="wow-name">PBIP</div><div class="wow-desc">Folder of text files. Git, diffs, code review, CI/CD.</div></div>
+          <div class="wow-stop s4"><div class="wow-name">Fabric ⬢</div><div class="wow-desc">The platform it all runs inside — OneLake, Direct Lake, pipelines.</div></div>
+        </div>
+      </div>
+
+      <!-- Comparison matrix -->
+      <div class="grid-card" style="margin-bottom:1.5rem;">
+        <div class="grid-card-header">PBIX vs PBIT vs PBIP — the same content, three ways of working <span class="badge badge-gold">Authoring Formats</span></div>
+        <table class="gov-table">
+          <thead>
+            <tr>
+              <th style="width:20%;">Attribute</th>
+              <th style="width:26.6%;"><span class="wow-fmt-head">PBIX</span><br><span class="wow-fmt-sub">Power BI Desktop file</span></th>
+              <th style="width:26.6%;"><span class="wow-fmt-head">PBIT</span><br><span class="wow-fmt-sub">Power BI Template</span></th>
+              <th style="width:26.6%;"><span class="wow-fmt-head">PBIP</span><br><span class="wow-fmt-sub">Power BI Project</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>What it is</strong></td><td>Report + model in one binary file</td><td>A template: structure &amp; queries, no data</td><td>A folder of text files (model + report)</td></tr>
+            <tr><td><strong>Format</strong></td><td>Binary</td><td>Binary</td><td><strong>Text</strong> — TMDL + PBIR</td></tr>
+            <tr><td><strong>Git / source control</strong></td><td><span class="wow-no">✗ no</span></td><td><span class="wow-no">✗ no</span></td><td><span class="wow-yes">✓ yes</span></td></tr>
+            <tr><td><strong>Diff &amp; code review</strong></td><td><span class="wow-no">✗ can't diff</span></td><td><span class="wow-no">✗ can't diff</span></td><td><span class="wow-yes">✓ line-by-line</span></td></tr>
+            <tr><td><strong>Contains data?</strong></td><td><span class="wow-yes">✓ yes</span></td><td><span class="wow-no">✗ no (template)</span></td><td><span class="wow-no">✗ no</span></td></tr>
+            <tr>
+              <td><strong>Tools &amp; skills</strong></td>
+              <td><span class="wow-tool">Power BI Desktop</span><div class="wow-skills">Skills: Desktop, DAX</div></td>
+              <td><span class="wow-tool">Power BI Desktop</span><span class="wow-tool">Parameters</span><div class="wow-skills">Skills: templating</div></td>
+              <td><span class="wow-tool">Desktop</span><span class="wow-tool">VS Code</span><span class="wow-tool">Git</span><span class="wow-tool">Tabular Editor</span><span class="wow-tool">Azure DevOps</span><div class="wow-skills">Skills: Git branching, TMDL, CI/CD, code review</div></td>
+            </tr>
+            <tr><td><strong>CI/CD ready</strong></td><td><span class="wow-no">✗ no</span></td><td><span class="wow-partial">~ limited</span></td><td><span class="wow-yes">✓ yes</span></td></tr>
+            <tr><td><strong>Best for</strong></td><td>Solo work, prototyping, speed</td><td>Sharing a standardized starting point</td><td>Team &amp; enterprise development</td></tr>
+            <tr><td><strong>Enterprise readiness</strong></td><td><span class="wow-pill wow-pill-low">Low</span></td><td><span class="wow-pill wow-pill-mid">Medium</span></td><td><span class="wow-pill wow-pill-high">High</span></td></tr>
+            <tr><td><strong>Honest verdict</strong></td><td style="font-style:italic;">Brilliant for speed &amp; solo — a dead end at team scale.</td><td style="font-style:italic;">Great for consistency; a starting point, not a workflow.</td><td style="font-style:italic;">The enterprise path: text, Git, reviewable, automatable.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Fabric platform band -->
+      <div class="wow-fabric">
+        <div class="wow-glabel">The platform it all converges on</div>
+        <h2>Microsoft Fabric &amp; OneLake</h2>
+        <p>These formats aren't rivals to Fabric — they live <em>inside</em> it. Fabric is where PBIP-as-source-code, Git, CI/CD, and a single data lake stop being separate tricks and become one integrated enterprise stack.</p>
+        <div class="wow-fgrid">
+          <div class="wow-fitem"><div class="wow-ft">OneLake</div><div class="wow-fd">One unified data lake for the whole tenant — one copy, governed.</div></div>
+          <div class="wow-fitem"><div class="wow-ft">Direct Lake</div><div class="wow-fd">Import-speed performance straight off OneLake — no refresh, no duplication.</div></div>
+          <div class="wow-fitem"><div class="wow-ft">Git integration + deployment pipelines</div><div class="wow-fd">The CI/CD that PBIP unlocks: dev → test → prod, safely.</div></div>
+          <div class="wow-fitem"><div class="wow-ft">Semantic-model-as-code (TMDL)</div><div class="wow-fd">The model becomes reviewable, version-controlled source.</div></div>
+        </div>
+      </div>
+
+      <!-- When to use what -->
+      <div class="wow-sec-label">When to use what</div>
+      <div class="wow-when">
+        <div class="wow-when-card"><div class="wow-wq">Solo report / quick prototype</div><div class="wow-wa">PBIX</div></div>
+        <div class="wow-when-card"><div class="wow-wq">Shareable starting template</div><div class="wow-wa">PBIT</div></div>
+        <div class="wow-when-card"><div class="wow-wq">Team build with version control</div><div class="wow-wa">PBIP</div></div>
+        <div class="wow-when-card"><div class="wow-wq">Huge data / single source of truth</div><div class="wow-wa">Fabric + Direct Lake</div></div>
+      </div>
+
+      <!-- Microsoft Learn sources -->
+      <div class="wow-sec-label">Microsoft Learn sources</div>
+      <div class="role-resource-grid">
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview" target="_blank" rel="noopener"><div class="rc-title">Power BI Projects (PBIP) →</div><div class="rc-desc">The folder-based, source-control-friendly project format.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/analysis-services/tmdl/tmdl-overview" target="_blank" rel="noopener"><div class="rc-title">TMDL Overview →</div><div class="rc-desc">The human-readable, diff-able text format for the semantic model.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-templates" target="_blank" rel="noopener"><div class="rc-title">Power BI Templates (PBIT) →</div><div class="rc-desc">Sharing a standardized starting point without the data.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/fundamentals/direct-lake-overview" target="_blank" rel="noopener"><div class="rc-title">Direct Lake →</div><div class="rc-desc">Import-speed analytics straight off OneLake — no refresh.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/onelake/onelake-overview" target="_blank" rel="noopener"><div class="rc-title">OneLake →</div><div class="rc-desc">The single, unified data lake for the whole tenant.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/cicd/git-integration/intro-to-git-integration" target="_blank" rel="noopener"><div class="rc-title">Git Integration →</div><div class="rc-desc">Version-control Fabric / Power BI items as source.</div></a>
+        <a class="role-resource-card" href="https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines" target="_blank" rel="noopener"><div class="rc-title">Deployment Pipelines →</div><div class="rc-desc">Promote content dev → test → prod, the CI/CD PBIP unlocks.</div></a>
+      </div>
+
+    </div><!-- /view-waysofworking -->
+
+
   </div><!-- /detail-panel -->
 </div><!-- /main-container -->
 
@@ -5794,6 +5931,7 @@
     document.getElementById('view-bestpractices').style.display = viewId === 'bestpractices' ? 'block' : 'none';
     document.getElementById('view-datasources').style.display = viewId === 'datasources' ? 'block' : 'none';
     document.getElementById('view-roleprofiles').style.display = viewId === 'roleprofiles' ? 'block' : 'none';
+    document.getElementById('view-waysofworking').style.display = viewId === 'waysofworking' ? 'block' : 'none';
     document.querySelectorAll('.view-toggle').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
