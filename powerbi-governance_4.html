@@ -3141,22 +3141,22 @@
         <div class="ds-layout">
           <nav class="ds-sidebar">
             <div class="ds-sidebar-title">Lifecycle</div>
-            <div class="ds-nav-item active" onclick="selectBpStage('bp-st-infra')"><div class="ds-nav-icon" style="background:#453f38;">🏗️</div>Data Infrastructure</div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-integration')"><div class="ds-nav-icon" style="background:#524b42;">📥</div>Data Ingestion</div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-modelling')"><div class="ds-nav-icon" style="background:#5f574d;">⭐</div>Semantic Modelling</div>
+            <div class="ds-nav-item active" onclick="selectBpStage('bp-st-infra')"><div class="ds-nav-icon" style="background:#453f38;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>Data Infrastructure</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-integration')"><div class="ds-nav-icon" style="background:#443e36;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>Data Ingestion</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-modelling')"><div class="ds-nav-icon" style="background:#50483f;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>Semantic Modelling</div>
             <div class="ds-nav-divider"></div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-dashboard')"><div class="ds-nav-icon" style="background:#6c6358;">📊</div>Dashboard Design</div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-performance')"><div class="ds-nav-icon" style="background:#796f63;">⚡</div>Performance Tuning</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-dashboard')"><div class="ds-nav-icon" style="background:#62584d;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>Dashboard Design</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-performance')"><div class="ds-nav-icon" style="background:#6f6558;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>Performance Tuning</div>
             <div class="ds-nav-divider"></div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-users')"><div class="ds-nav-icon" style="background:#867b6e;">👥</div>Users</div>
-            <div class="ds-nav-item" onclick="selectBpStage('bp-st-governance')"><div class="ds-nav-icon" style="background:#2d2b28;">🛡️</div>Governance</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-users')"><div class="ds-nav-icon" style="background:#7d7365;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>Users</div>
+            <div class="ds-nav-item" onclick="selectBpStage('bp-st-governance')"><div class="ds-nav-icon" style="background:#2d2b28;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>Governance</div>
           </nav>
 
           <div class="ds-content-area">
 
             <!-- DATA INFRASTRUCTURE (7) -->
             <div id="bp-st-infra" class="ds-source-panel active">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#453f38;">🏗️</div><div><h2>Data Infrastructure</h2><p>Sources, capacity, storage and the foundation everything else is built on.</p></div><div class="ds-item-count"><div class="num">7</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#453f38;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div><h2>Data Infrastructure</h2><p>Sources, capacity, storage and the foundation everything else is built on.</p></div><div class="ds-item-count"><div class="num">7</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Select the correct capacity type</div><div class="cd">Match the licence to the workload — Pro · PPU · Premium (P-SKU) · Fabric (F-SKU).</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Separate capacities when CPU is over-utilised</div><div class="cd">Isolate heavy workloads so one model can't starve the rest.</div></div>
@@ -3170,7 +3170,7 @@
 
             <!-- DATA INGESTION (10) -->
             <div id="bp-st-integration" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#524b42;">📥</div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">10</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#443e36;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div><h2>Data Ingestion</h2><p>Moving, transforming and refreshing data — reliably and on time.</p></div><div class="ds-item-count"><div class="num">10</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Move transformation logic to the database</div><div class="cd">Let the source do the heavy lifting; keep the model lean and folding-friendly.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Assess model structure with VertiPaq Analyser</div><div class="cd">Find the columns and tables bloating the model before they hurt.</div></div>
@@ -3185,9 +3185,9 @@
               </div>
             </div>
 
-            <!-- SEMANTIC MODELLING (15 + 5 unit testing) -->
+            <!-- SEMANTIC MODELLING (15 + 5 unit testing + 2 external) -->
             <div id="bp-st-modelling" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#5f574d;">⭐</div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">20</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#50483f;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">22</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Adopt a star schema data model</div><div class="cd">Conformed dimensions + facts — the engine's native, fastest shape.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Move business logic back to the source</div><div class="cd">Calculate once upstream, not in every downstream model.</div></div>
@@ -3209,12 +3209,14 @@
                 <div class="bp-card" style="border-color:rgba(217,119,87,0.35);"><div class="ci">18</div><div class="ct">Validate RLS / OLS with Test-as-role 🧪</div><div class="cd">Confirm each role sees exactly what it should — and nothing more.</div></div>
                 <div class="bp-card" style="border-color:rgba(217,119,87,0.35);"><div class="ci">19</div><div class="ct">Regression-test after every change 🧪</div><div class="cd">Re-run the measure suite before publishing a model change.</div></div>
                 <div class="bp-card" style="border-color:rgba(217,119,87,0.35);"><div class="ci">20</div><div class="ct">Automate tests in the pipeline 🧪</div><div class="cd">Run BPA + measure tests as a deployment gate (dev→test→prod).</div></div>
+                <div class="bp-card" style="border-color:rgba(123,141,166,0.4);"><div class="ci">21</div><div class="ct">RLS for external users (Azure B2B) 🔗</div><div class="cd">Guests sign in via Microsoft Entra External ID (B2B); map their UPN in the RLS table so they see only their slice.</div></div>
+                <div class="bp-card" style="border-color:rgba(123,141,166,0.4);"><div class="ci">22</div><div class="ct">Validate external RLS &amp; sharing 🔗</div><div class="cd">Test-as-role with the guest UPN; confirm B2B users resolve to the right rows before you share externally.</div></div>
               </div>
             </div>
 
             <!-- DASHBOARD DESIGN (6) -->
             <div id="bp-st-dashboard" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#6c6358;">📊</div><div><h2>Dashboard Design</h2><p>Report UX that answers the question — fast, clear and accessible.</p></div><div class="ds-item-count"><div class="num">6</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#62584d;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div><h2>Dashboard Design</h2><p>Report UX that answers the question — fast, clear and accessible.</p></div><div class="ds-item-count"><div class="num">6</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Avoid rendering more than fits on a screen</div><div class="cd">No off-canvas visuals — design to the viewport.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Avoid multi-layered hierarchies in matrices</div><div class="cd">Deep nesting is slow to render and hard to read.</div></div>
@@ -3225,17 +3227,21 @@
               </div>
             </div>
 
-            <!-- PERFORMANCE TUNING (4 + VertiPaq) -->
+            <!-- PERFORMANCE TUNING (7 + VertiPaq panels) -->
             <div id="bp-st-performance" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#796f63;">⚡</div><div><h2>Performance Tuning</h2><p>Make it fast and keep it fast — measure, then fix the slowest thing first.</p></div><div class="ds-item-count"><div class="num">4</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#6f6558;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><h2>Performance Tuning</h2><p>Make it fast and keep it fast — measure, then fix the slowest thing first.</p></div><div class="ds-item-count"><div class="num">7</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Isolate focus areas with the Power BI trace</div><div class="cd">Find the exact slow visual or query before optimising.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Pay attention to slicer loading times</div><div class="cd">Heavy slicers delay the whole page — measure and trim them.</div></div>
                 <div class="bp-card"><div class="ci">3</div><div class="ct">Split reports into multiple pages / tables</div><div class="cd">Spread the query load instead of one heavy page.</div></div>
                 <div class="bp-card"><div class="ci">4</div><div class="ct">Use custom visuals with care</div><div class="cd">Vet the performance and security of marketplace visuals.</div></div>
+                <div class="bp-card"><div class="ci">5</div><div class="ct">Understand column size</div><div class="cd">Col Size = Data + Dictionary + Hierarchy. High-cardinality columns blow up the dictionary.</div></div>
+                <div class="bp-card"><div class="ci">6</div><div class="ct">Choose the right encoding</div><div class="cd">VALUE for low-cardinality numerics (no dictionary), HASH otherwise; watch auto RowNumber columns.</div></div>
+                <div class="bp-card"><div class="ci">7</div><div class="ct">Check relationship integrity</div><div class="cd">Missing Keys &amp; Invalid Rows flag fact rows pointing to absent dimension keys → (Blank) members.</div></div>
               </div>
+
               <div class="vp">
-                <div class="vp-head"><div class="t">VertiPaq Metrics — where the model weight is</div><div class="tag">Worked example</div></div>
+                <div class="vp-head"><div class="t">VertiPaq Metrics — where the model weight is</div><div class="tag">Tables · column size</div></div>
                 <table>
                   <thead><tr><th>Column (Sales)</th><th style="text-align:right;">Cardinality</th><th>Column size</th><th>Enc.</th></tr></thead>
                   <tbody>
@@ -3246,25 +3252,42 @@
                     <tr><td class="vp-col">Customer Key</td><td class="vp-num">18,869</td><td><div class="vp-barwrap"><div class="vp-bar vp-dim" style="width:8%;"></div><span class="vp-num">6.7 MB</span></div></td><td><span class="vp-enc vp-hash">HASH</span></td></tr>
                   </tbody>
                 </table>
-                <div class="vp-foot"><strong>Read it like this:</strong> two high-cardinality keys eat ~67% of the table. Drop keys you don't report on, lower cardinality (split datetime, integer surrogate keys), and reconsider VALUE vs HASH encoding.</div>
+                <div class="vp-foot"><strong>Column size = Data + Dictionary + Hierarchy.</strong> Two high-cardinality keys eat ~67% of the table — their <em>dictionary</em> is the weight. Drop keys you don't report on, lower cardinality, and reconsider VALUE vs HASH encoding.</div>
+              </div>
+
+              <div class="vp" style="margin-top:1rem;">
+                <div class="vp-head"><div class="t">Relationship integrity — missing keys &amp; invalid rows</div><div class="tag">Relationships</div></div>
+                <table>
+                  <thead><tr><th>Relationship</th><th style="text-align:right;">Size</th><th style="text-align:right;">Missing keys</th><th style="text-align:right;">Invalid rows</th></tr></thead>
+                  <tbody>
+                    <tr class="vp-hot"><td class="vp-col">Sales — all relationships</td><td class="vp-num">43,520</td><td class="vp-num" style="color:#bd5b39;font-weight:600;">4,366</td><td class="vp-num" style="color:#bd5b39;font-weight:600;">21,849,710</td></tr>
+                    <tr><td class="vp-col">Sales[Customer Key] → Customers</td><td class="vp-num">37,752</td><td class="vp-num">0</td><td class="vp-num">0</td></tr>
+                    <tr class="vp-hot"><td class="vp-col">Sales[Product Key] → Products</td><td class="vp-num">2,880</td><td class="vp-num" style="color:#bd5b39;font-weight:600;">2,183</td><td class="vp-num" style="color:#bd5b39;font-weight:600;">10,924,855</td></tr>
+                    <tr><td class="vp-col">Sales[Store Key] → Store</td><td class="vp-num">8</td><td class="vp-num">0</td><td class="vp-num">0</td></tr>
+                  </tbody>
+                </table>
+                <div class="vp-foot"><strong>Read it like this:</strong> <em>missing keys</em> are dimension values the fact references but the dimension lacks; <em>invalid rows</em> are the fact rows that fall through to <code>(Blank)</code>. 10.9M invalid rows on Product Key means totals are quietly wrong — fix the keys upstream, don't paper over it in the report.</div>
               </div>
             </div>
 
-            <!-- USERS (5) -->
+            <!-- USERS (8) -->
             <div id="bp-st-users" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#867b6e;">👥</div><div><h2>Users</h2><p>Adoption, access and enablement — getting people real value from the platform.</p></div><div class="ds-item-count"><div class="num">5</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#7d7365;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h2>Users</h2><p>Adoption, access and distribution — getting people real value, securely.</p></div><div class="ds-item-count"><div class="num">8</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Role-based access &amp; licensing</div><div class="cd">Workspace roles, the Pro/PPU/F64 viewer model, least privilege throughout.</div></div>
-                <div class="bp-card"><div class="ci">2</div><div class="ct">Enablement &amp; training</div><div class="cd">A centralized portal, role-based training, template files and office hours.</div></div>
-                <div class="bp-card"><div class="ci">3</div><div class="ct">Champions &amp; CoE</div><div class="cd">A champions network / Center of Excellence to spread good practice.</div></div>
-                <div class="bp-card"><div class="ci">4</div><div class="ct">Self-service guardrails</div><div class="cd">Managed self-service, Build permission, endorse content, discourage rogue models.</div></div>
-                <div class="bp-card"><div class="ci">5</div><div class="ct">Adoption measurement</div><div class="cd">Usage metrics, active users, certified-content usage, and a feedback loop.</div></div>
+                <div class="bp-card"><div class="ci">2</div><div class="ct">Distribute via Apps, not workspace access</div><div class="cd">Publish a Power BI App for consumers; keep workspace roles for builders only — a curated, governed read experience.</div></div>
+                <div class="bp-card"><div class="ci">3</div><div class="ct">Use Entra (Azure AD) security groups</div><div class="cd">Assign app audiences &amp; workspace roles to groups, never individuals — it scales and audits cleanly.</div></div>
+                <div class="bp-card"><div class="ci">4</div><div class="ct">Segment with App audiences</div><div class="cd">Tailor which pages each audience sees from a single app.</div></div>
+                <div class="bp-card"><div class="ci">5</div><div class="ct">Enablement &amp; training</div><div class="cd">A centralized portal, role-based training, template files and office hours.</div></div>
+                <div class="bp-card"><div class="ci">6</div><div class="ct">Champions &amp; CoE</div><div class="cd">A champions network / Center of Excellence to spread good practice.</div></div>
+                <div class="bp-card"><div class="ci">7</div><div class="ct">Self-service guardrails</div><div class="cd">Managed self-service, Build permission, endorse content, discourage rogue models.</div></div>
+                <div class="bp-card"><div class="ci">8</div><div class="ct">Adoption measurement</div><div class="cd">Usage metrics, active users, certified-content usage, and a feedback loop.</div></div>
               </div>
             </div>
 
             <!-- GOVERNANCE (5) -->
             <div id="bp-st-governance" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#2d2b28;">🛡️</div><div><h2>Governance</h2><p>Oversight, protection and lifecycle — keeping the whole estate trustworthy.</p></div><div class="ds-item-count"><div class="num">5</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#2d2b28;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h2>Governance</h2><p>Oversight, protection and lifecycle — keeping the whole estate trustworthy.</p></div><div class="ds-item-count"><div class="num">5</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Tenant settings &amp; guardrails</div><div class="cd">Scope features to security groups, change-control changes, PIM for admins.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Information protection</div><div class="cd">Sensitivity labels, RLS/OLS standards, DLP, conditional access for BI.</div></div>
