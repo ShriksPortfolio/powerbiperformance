@@ -3201,7 +3201,7 @@
 
             <!-- SEMANTIC MODELLING (15 + 5 unit testing + 2 external) -->
             <div id="bp-st-modelling" class="ds-source-panel">
-              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#50483f;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">28</div><div class="lbl">Practices</div></div></div>
+              <div class="ds-source-header"><div class="ds-source-header-icon" style="background:#50483f;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f2ea" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div><h2>Semantic Modelling</h2><p>The star schema, DAX, security and testing that make a model trustworthy.</p></div><div class="ds-item-count"><div class="num">29</div><div class="lbl">Practices</div></div></div>
               <div class="bp-cards">
                 <div class="bp-card"><div class="ci">1</div><div class="ct">Adopt a star schema data model</div><div class="cd">Conformed dimensions + facts — the engine's native, fastest shape.</div></div>
                 <div class="bp-card"><div class="ci">2</div><div class="ct">Move business logic back to the source</div><div class="cd">Calculate once upstream, not in every downstream model.</div></div>
@@ -3231,6 +3231,7 @@
                 <div class="bp-card"><div class="ci">26</div><div class="ct">Set summarization &amp; data categories</div><div class="cd">Stop keys auto-summing; set geography / URL / image categories where they help.</div></div>
                 <div class="bp-card"><div class="ci">27</div><div class="ct">Add display folders, descriptions &amp; synonyms</div><div class="cd">Usability for authors and better Copilot / Q&amp;A answers.</div></div>
                 <div class="bp-card"><div class="ci">28</div><div class="ct">Use aggregations for very large models</div><div class="cd">Pre-aggregate so big Import / DirectQuery models stay fast.</div></div>
+                <div class="bp-card" style="border-color:rgba(217,119,87,0.4);"><div class="ci">29</div><div class="ct">Facts hold keys + measures only</div><div class="cd">Keep fact tables to foreign keys and numeric measures &mdash; no descriptive columns. Map unmatched references to a &minus;1 &ldquo;Not found&rdquo; dimension member so every row still joins (no (Blank)).</div></div>
               </div>
             </div>
 
