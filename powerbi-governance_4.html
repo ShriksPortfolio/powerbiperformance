@@ -1039,10 +1039,12 @@
   .wow-fmt-head { font-weight: 600; }
 
   /* Editorial prose in Lora for the magazine feel (UI/tables stay Poppins) */
-  .role-overview, .ds-source-header p, .intro-banner p,
+  .role-overview, .ds-source-header p,
   .wow-intro, .role-qa-a, .frole-row p, .frole-row {
     font-family: var(--serif);
   }
+  /* Intro lede stays clean sans — it runs wide, where serif reads dense */
+  .intro-banner p { font-family: var(--sans); font-size: 0.85rem; line-height: 1.8; color: var(--soft); }
   .role-overview { font-size: 0.9rem; line-height: 1.78; }
 
   /* Hairline borders, flat cream surfaces (no pure white) */
@@ -1133,9 +1135,10 @@
       </svg>
     </div>
     <div>
-      <div class="header-brand">Power BI Governance</div>
+      <div class="header-brand">Power BI : Fabric Governance</div>
       <div class="header-author">Content Author: <strong>By Shrikesh Pattni</strong> | Lead Architect</div>
-      <div class="header-title">Power BI Accelerator: Data Analytics Governance Playbook</div>
+      <div class="header-title">Data Analytics Governance &amp; Best Practices Playbook</div>
+      <div class="header-updated" style="font-family:var(--sans); font-size:0.7rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-top:0.4rem;">Last updated · 28.06.2026</div>
     </div>
   </div>
   <div class="header-badge">All sources validated against Microsoft Learn</div>
@@ -6095,7 +6098,7 @@
   <a href="https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-setup" target="_blank">Scanner Setup</a> ·
   <a href="https://learn.microsoft.com/en-us/power-bi/guidance/powerbi-implementation-planning-auditing-monitoring-tenant-level-auditing" target="_blank">Tenant Auditing</a>
   <br>
-  All content validated against Microsoft Learn official documentation · Last reviewed February 2026
+  All content validated against Microsoft Learn official documentation · Last updated 28.06.2026
 </div>
 
 <script>
